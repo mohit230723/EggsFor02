@@ -3,6 +3,7 @@ import { EmptyState } from "@/components/ui/EmptyState";
 import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
+import { ArenaMatchRunner } from "@/components/ArenaMatchRunner";
 
 // Mock Data
 const MOCK_MATCHES = [
@@ -31,49 +32,58 @@ export default function ArenaPage() {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Active Matches Column */}
-        <div className="lg:col-span-2 space-y-6">
-          <div className="flex items-center gap-3">
-            <h2 className="text-3xl text-amber font-heading tracking-widest">MATCH BOARD</h2>
-            <div className="px-2 py-0.5 bg-charcoal border border-steel/30 rounded text-xs text-smoke font-mono">
-              Network: Algorand Testnet
-            </div>
-          </div>
+        <div className="lg:col-span-2 space-y-12">
           
+          {/* Phase 2: Sandbox Runner */}
           <div className="space-y-4">
-            {MOCK_MATCHES.map((match) => (
-              <Card 
-                key={match.id} 
-                variant={match.status === "LIVE" ? "danger" : match.status === "BETTING_OPEN" ? "highlight" : "default"}
-                className={`p-5 flex flex-col md:flex-row items-center justify-between gap-6 ${match.status === "WAITING" ? "opacity-70" : ""}`}
-              >
-                
-                {/* Info Block */}
-                <div className="w-full md:w-1/4 space-y-2 text-center md:text-left">
-                  <Badge 
-                    label={match.status} 
-                    color={match.status === "LIVE" ? "red" : match.status === "BETTING_OPEN" ? "amber" : "gray"} 
-                  />
-                  <p className="text-smoke text-sm font-mono truncate">{match.game}</p>
-                  <p className="text-steel text-xs font-mono">Pool: {match.pool}</p>
-                </div>
+            <h2 className="text-3xl text-amber font-heading tracking-widest hidden">SANDBOX</h2>
+            <ArenaMatchRunner />
+          </div>
 
-                {/* Matchup Block */}
-                <div className="w-full md:w-2/4 flex items-center justify-center gap-4">
-                  <div className="text-right w-2/5 truncate font-bold text-bone">{match.p1}</div>
-                  <div className={`w-1/5 text-center font-heading text-xl ${match.status === "LIVE" ? "text-bloodRed animate-pulse" : "text-steel"}`}>VS</div>
-                  <div className={`text-left w-2/5 truncate font-bold ${match.p2 === "OPEN SLOT" ? "text-smoke italic font-normal" : "text-bone"}`}>
-                    {match.p2}
+          <div>
+            <div className="flex items-center gap-3 mb-6">
+              <h2 className="text-3xl text-bone font-heading tracking-widest">LIVE BOARD</h2>
+              <div className="px-2 py-0.5 bg-charcoal border border-steel/30 rounded text-xs text-smoke font-mono">
+                Network: Algorand Testnet
+              </div>
+            </div>
+            
+            <div className="space-y-4">
+              {MOCK_MATCHES.map((match) => (
+                <Card 
+                  key={match.id} 
+                  variant={match.status === "LIVE" ? "danger" : match.status === "BETTING_OPEN" ? "highlight" : "default"}
+                  className={`p-5 flex flex-col md:flex-row items-center justify-between gap-6 ${match.status === "WAITING" ? "opacity-70" : ""}`}
+                >
+                  
+                  {/* Info Block */}
+                  <div className="w-full md:w-1/4 space-y-2 text-center md:text-left">
+                    <Badge 
+                      label={match.status} 
+                      color={match.status === "LIVE" ? "red" : match.status === "BETTING_OPEN" ? "amber" : "gray"} 
+                    />
+                    <p className="text-smoke text-sm font-mono truncate">{match.game}</p>
+                    <p className="text-steel text-xs font-mono">Pool: {match.pool}</p>
                   </div>
-                </div>
 
-                {/* Action Block */}
-                <div className="w-full md:w-1/4 flex justify-center md:justify-end">
-                  {match.status === "LIVE" && <Button variant="secondary" size="sm">Spectate</Button>}
-                  {match.status === "BETTING_OPEN" && <Button variant="primary" size="sm" href="/predictions">Place Bet</Button>}
-                  {match.status === "WAITING" && <Button variant="ghost" size="sm">Join specific</Button>}
-                </div>
-              </Card>
-            ))}
+                  {/* Matchup Block */}
+                  <div className="w-full md:w-2/4 flex items-center justify-center gap-4">
+                    <div className="text-right w-2/5 truncate font-bold text-bone">{match.p1}</div>
+                    <div className={`w-1/5 text-center font-heading text-xl ${match.status === "LIVE" ? "text-bloodRed animate-pulse" : "text-steel"}`}>VS</div>
+                    <div className={`text-left w-2/5 truncate font-bold ${match.p2 === "OPEN SLOT" ? "text-smoke italic font-normal" : "text-bone"}`}>
+                      {match.p2}
+                    </div>
+                  </div>
+
+                  {/* Action Block */}
+                  <div className="w-full md:w-1/4 flex justify-center md:justify-end">
+                    {match.status === "LIVE" && <Button variant="secondary" size="sm">Spectate</Button>}
+                    {match.status === "BETTING_OPEN" && <Button variant="primary" size="sm" href="/predictions">Place Bet</Button>}
+                    {match.status === "WAITING" && <Button variant="ghost" size="sm">Join specific</Button>}
+                  </div>
+                </Card>
+              ))}
+            </div>
           </div>
 
         </div>
