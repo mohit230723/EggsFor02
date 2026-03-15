@@ -28,7 +28,7 @@ export default function Navbar() {
           CORTEX
         </Link>
 
-        {/* DESKTOP LINKS */}
+        {/* NAV LINKS & WALLET (DESKTOP) */}
         <div className="hidden md:flex items-center space-x-2">
           {navLinks.map((link) => {
             const isActive = pathname.startsWith(link.href);
@@ -46,17 +46,28 @@ export default function Navbar() {
               </Link>
             );
           })}
+          
+          <div className="pl-4 border-l border-steel/30 ml-2">
+            <button className="px-5 py-2 font-heading tracking-wider text-nearBlack bg-bone hover:bg-amber hover:shadow-[0_0_10px_rgba(245,158,11,0.5)] transition-all duration-300 uppercase rounded-full text-sm">
+              Connect Wallet
+            </button>
+          </div>
         </div>
 
-        {/* MOBILE TOGGLE Placeholder */}
-        <button 
-          className="md:hidden text-bone p-2"
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-        >
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-          </svg>
-        </button>
+        {/* MOBILE TOGGLE & WALLET */}
+        <div className="flex md:hidden items-center space-x-3">
+          <button className="px-3 py-1.5 font-heading tracking-wider text-nearBlack bg-bone hover:bg-amber transition-all duration-300 uppercase rounded-full text-xs">
+            Connect
+          </button>
+          <button 
+            className="text-bone p-1"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          >
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
       </div>
 
       {/* MOBILE MENU */}
