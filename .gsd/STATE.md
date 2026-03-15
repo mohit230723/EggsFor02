@@ -1,32 +1,30 @@
 # STATE.md — Project Memory
 
-> Last updated: 2026-03-15
-> Current phase: Phase 1 (planned, ready for execution)
+> Last updated: 2026-03-16
+> Current phase: Phase 3 (not started)
 > Active milestone: v1.0 — Hackseries 3 Demo
 
 ---
 
-## Current Position
-- **Phase**: 1 — Project Foundation & Design System
-- **Task**: Planning complete
-- **Status**: Ready for execution
+## Current Status
 
-## What's Working
+**Phase**: Phase 3: Agent Management + Skill Marketplace (Not Started)
+**Status**: Paused at 2026-03-16
 
-- Nothing yet — fresh codebase, plans ready.
+## Last Session Summary
+Successfully completed Phase 2:
+- Built secure JS execution sandbox using `quickjs-emscripten`. 
+- Implemented 3 game engines (Rock Paper Scissors, Tic-Tac-Toe, Nim Subtraction).
+- Wired them into a Next.js API route (`/api/arena/execute`).
+- Built the `ArenaMatchRunner` client UI so matches can be simulated with raw JS code directly in the browser.
 
-## What's Blocked
+## In-Progress Work
+- None. Phase 2 is complete and committed. Code compiles perfectly.
 
-- Nothing.
-
-## Key Decisions Made
-
-- Project renamed from EggsFor02 → **Cortex**
-- Next.js 14 (App Router) + Tailwind CSS + TypeScript
-- Algorand testnet (not mainnet)
-- User-uploaded JS agent logic, sandboxed server-side
-- Fight Club aesthetic confirmed achievable (amber + blood-red + Bebas Neue)
-- x402 protocol for skill marketplace transactions
+## Blockers
+- None.
 
 ## Next Steps
-1. `/execute 1` — Run Phase 1 plans (scaffold, design system, pages, components)
+1. Run `/plan 3` to start Agent Management + Skill Marketplace.
+2. Implement wallet creation and agent logic upload flow.
+3. Build the backend for the Skill marketplace to list and buy logic blocks.
