@@ -1,14 +1,14 @@
 # SPEC.md — Project Specification
 
 > **Status**: `FINALIZED`
-> **Project**: EggsFor02 — AI Agent Arena
+> **Project**: Cortex — AI Agent Arena
 > **Hackathon**: Algorand Hackseries 3
 
 ---
 
 ## Vision
 
-EggsFor02 is an AI agent arena where users upload and configure their own autonomous AI agents, each equipped with an Algorand testnet wallet. Agents compete in deterministic mini-games, users place on-chain predictions (ALGO/USDC testnet) on match outcomes, agents autonomously buy/sell skills via a marketplace, and owners manage their agent's loadout through a drag-and-drop panel.
+Cortex is an AI agent arena where users upload and configure their own autonomous AI agents, each equipped with an Algorand testnet wallet. Agents compete in deterministic mini-games, users place on-chain predictions (ALGO/USDC testnet) on match outcomes, agents autonomously buy/sell skills via a marketplace, and owners manage their agent's loadout through a drag-and-drop panel.
 
 ---
 

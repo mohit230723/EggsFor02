@@ -1,31 +1,32 @@
 # STATE.md — Project Memory
 
 > Last updated: 2026-03-15
-> Current phase: Phase 1 (not started)
+> Current phase: Phase 1 (planned, ready for execution)
 > Active milestone: v1.0 — Hackseries 3 Demo
 
 ---
 
-## Current Status
-
-**Phase**: Not started — run `/plan 1` to begin Phase 1 execution planning.
+## Current Position
+- **Phase**: 1 — Project Foundation & Design System
+- **Task**: Planning complete
+- **Status**: Ready for execution
 
 ## What's Working
 
-- Nothing yet — fresh codebase.
+- Nothing yet — fresh codebase, plans ready.
 
 ## What's Blocked
 
-- Nothing yet.
+- Nothing.
 
 ## Key Decisions Made
 
-- Next.js 14 (App Router) + Tailwind CSS
+- Project renamed from EggsFor02 → **Cortex**
+- Next.js 14 (App Router) + Tailwind CSS + TypeScript
 - Algorand testnet (not mainnet)
 - User-uploaded JS agent logic, sandboxed server-side
-- Fight Club aesthetic (amber + blood-red + Bebas Neue)
+- Fight Club aesthetic confirmed achievable (amber + blood-red + Bebas Neue)
 - x402 protocol for skill marketplace transactions
 
-## Context for Next Session
-
-Fresh project initialized. All 4 core features defined. Phase 1 is UI foundation — scaffold Next.js, configure Tailwind design system, build all page shells.
+## Next Steps
+1. `/execute 1` — Run Phase 1 plans (scaffold, design system, pages, components)

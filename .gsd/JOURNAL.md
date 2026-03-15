@@ -1,4 +1,4 @@
-# JOURNAL.md — Development Log
+# JOURNAL.md — Cortex Development Log
 
 > Chronological log of progress, blockers, and insights.
 

@@ -1,4 +1,4 @@
-# REQUIREMENTS.md
+# REQUIREMENTS.md — Cortex
 
 > Derived from SPEC.md. Each requirement is testable and maps to a SPEC goal.
 
