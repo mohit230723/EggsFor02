@@ -1,24 +1,22 @@
 @import "tailwindcss";
 
 @theme inline {
-  /* Colors - Cortex Fight Club Palette */
-  --color-nearBlack: #0A0A0A;
-  --color-charcoal: #1A1A1A;
-  --color-bone: #FFFBEB;
-  --color-amber: #F59E0B;
-  --color-bloodRed: #DC2626;
-  --color-rust: #B91C1C;
-  --color-steel: #374151;
-  --color-smoke: #9CA3AF;
+  /* Colors - Futuristic Fluid Minimalism (Reference Image) */
+  --color-spaceBlue: #0A0F1B;
+  --color-deepNavy: #111A31;
+  --color-mutedBlue: #2A4474;
+  --color-sand: #D5CABB;
+  --color-cream: #EAE3D9;
+  --color-softWhite: #F8FAFC;
+  --color-pureWhite: #FFFFFF;
+  --color-cyanGlow: #22D3EE;
+  --color-blueGlow: #3B82F6;
+  --color-purpleGlow: #A78BFA;
 
   /* Typography */
-  --font-heading: var(--font-bebas);
-  --font-body: var(--font-space);
-  --font-accent: var(--font-oswald);
-
-  /* Utilities */
-  --animate-flicker: flicker 3s linear infinite;
-  --animate-pulse-glow: pulse-glow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --font-heading: var(--font-heading);
+  --font-body: var(--font-body);
+  --font-mono: var(--font-mono);
 }
 
 @layer base {
@@ -27,13 +25,13 @@
   }
 
   body {
-    @apply bg-nearBlack text-bone font-body antialiased;
+    @apply bg-spaceBlue text-softWhite font-body antialiased;
     position: relative;
     min-height: 100vh;
     overflow-x: hidden;
   }
 
-  /* CSS Grain Texture Overlay */
+  /* Extremely subtle grain texture */
   body::before {
     content: "";
     position: fixed;
@@ -43,65 +41,59 @@
     height: 100vh;
     pointer-events: none;
     z-index: 50;
-    opacity: 0.04;
+    opacity: 0.02;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
   }
 
-  /* Setup custom scrollbar for dark theme */
+  /* Setup custom scrollbar for dark fluid theme */
   ::-webkit-scrollbar {
     width: 8px;
     height: 8px;
   }
   ::-webkit-scrollbar-track {
-    @apply bg-nearBlack;
+    @apply bg-spaceBlue;
   }
   ::-webkit-scrollbar-thumb {
-    @apply bg-charcoal border border-steel/20;
+    @apply bg-deepNavy border border-mutedBlue/10 rounded-full;
   }
   ::-webkit-scrollbar-thumb:hover {
-    @apply bg-steel;
+    @apply bg-mutedBlue/80;
   }
 }
 
 @layer components {
-  /* Headings typically use Bebas */
+  /* Fluid Typography */
   h1, h2, h3, h4, h5, h6 {
-    @apply font-heading tracking-wide uppercase;
+    @apply font-heading font-medium tracking-tight;
   }
 
-  /* Specific component tokens we'll use in React */
-  .card-industrial {
-    @apply bg-charcoal border border-steel/30 shadow-md transition-all duration-300;
-  }
-  .card-industrial:hover {
-    @apply border-steel/60 shadow-lg;
+  /* Glassmorphism Classes */
+  .glass-panel {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 24px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
   }
 
-  .text-glow {
-    text-shadow: 0 0 10px rgba(245, 158, 11, 0.5); /* Amber glow */
+  .glass-panel:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 8px 32px rgba(34, 211, 238, 0.05);
+  }
+
+  /* Soft Glow Text Utilities */
+  .text-glow-cyan {
+    text-shadow: 0 0 12px rgba(34, 211, 238, 0.4);
   }
   
-  .text-glow-red {
-    text-shadow: 0 0 10px rgba(220, 38, 38, 0.5); /* Blood red glow */
+  .text-glow-purple {
+    text-shadow: 0 0 12px rgba(167, 139, 250, 0.4);
   }
-}
 
-@keyframes flicker {
-  0%, 19.999%, 22%, 62.999%, 64%, 64.999%, 70%, 100% {
-    opacity: 1;
-  }
-  20%, 21.999%, 63%, 63.999%, 65%, 69.999% {
-    opacity: 0.4;
-  }
-}
-
-@keyframes pulse-glow {
-  0%, 100% {
-    opacity: 1;
-    box-shadow: 0 0 15px rgba(245, 158, 11, 0.6);
-  }
-  50% {
-    opacity: .8;
-    box-shadow: 0 0 5px rgba(245, 158, 11, 0.2);
+  .text-glow-white {
+    text-shadow: 0 0 15px rgba(241, 245, 249, 0.3);
   }
 }

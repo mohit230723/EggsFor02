@@ -4,6 +4,8 @@ import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
 import { ArenaMatchRunner } from "@/components/ArenaMatchRunner";
+import { MatchCard } from "@/components/MatchCard";
+import SpotlightCard from "@/components/ui/SpotlightCard";
 
 // Mock Data
 const MOCK_MATCHES = [
@@ -42,46 +44,22 @@ export default function ArenaPage() {
 
           <div>
             <div className="flex items-center gap-3 mb-6">
-              <h2 className="text-3xl text-bone font-heading tracking-widest">LIVE BOARD</h2>
-              <div className="px-2 py-0.5 bg-charcoal border border-steel/30 rounded text-xs text-smoke font-mono">
+              <h2 className="text-2xl text-softWhite font-heading tracking-widest uppercase">Live Combat</h2>
+              <div className="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[10px] text-smoke font-mono uppercase tracking-widest">
                 Network: Algorand Testnet
               </div>
             </div>
             
-            <div className="space-y-4">
+            <div className="space-y-6">
               {MOCK_MATCHES.map((match) => (
-                <Card 
-                  key={match.id} 
-                  variant={match.status === "LIVE" ? "danger" : match.status === "BETTING_OPEN" ? "highlight" : "default"}
-                  className={`p-5 flex flex-col md:flex-row items-center justify-between gap-6 ${match.status === "WAITING" ? "opacity-70" : ""}`}
-                >
-                  
-                  {/* Info Block */}
-                  <div className="w-full md:w-1/4 space-y-2 text-center md:text-left">
-                    <Badge 
-                      label={match.status} 
-                      color={match.status === "LIVE" ? "red" : match.status === "BETTING_OPEN" ? "amber" : "gray"} 
-                    />
-                    <p className="text-smoke text-sm font-mono truncate">{match.game}</p>
-                    <p className="text-steel text-xs font-mono">Pool: {match.pool}</p>
-                  </div>
-
-                  {/* Matchup Block */}
-                  <div className="w-full md:w-2/4 flex items-center justify-center gap-4">
-                    <div className="text-right w-2/5 truncate font-bold text-bone">{match.p1}</div>
-                    <div className={`w-1/5 text-center font-heading text-xl ${match.status === "LIVE" ? "text-bloodRed animate-pulse" : "text-steel"}`}>VS</div>
-                    <div className={`text-left w-2/5 truncate font-bold ${match.p2 === "OPEN SLOT" ? "text-smoke italic font-normal" : "text-bone"}`}>
-                      {match.p2}
-                    </div>
-                  </div>
-
-                  {/* Action Block */}
-                  <div className="w-full md:w-1/4 flex justify-center md:justify-end">
-                    {match.status === "LIVE" && <Button variant="secondary" size="sm">Spectate</Button>}
-                    {match.status === "BETTING_OPEN" && <Button variant="primary" size="sm" href="/predictions">Place Bet</Button>}
-                    {match.status === "WAITING" && <Button variant="ghost" size="sm">Join specific</Button>}
-                  </div>
-                </Card>
+                <MatchCard 
+                  key={match.id}
+                  status={match.status === "BETTING_OPEN" ? "BETTING" : match.status as any}
+                  gameType={match.game}
+                  stake={match.pool}
+                  p1={{ name: match.p1, winRate: "50%" }}
+                  p2={{ name: match.p2, winRate: match.p2 === "OPEN SLOT" ? "0%" : "50%" }}
+                />
               ))}
             </div>
           </div>
@@ -89,41 +67,42 @@ export default function ArenaPage() {
         </div>
 
         {/* Sidebar */}
-        <div className="space-y-6">
-          <h2 className="text-3xl text-bone font-heading tracking-widest">LEADERBOARD</h2>
+        <div className="space-y-8">
+          <h2 className="text-2xl text-softWhite font-heading tracking-widest uppercase text-center">Leaderboard</h2>
           
-          <Card className="overflow-hidden">
-            <div className="bg-nearBlack/50 p-3 border-b border-steel/20 flex justify-between text-xs text-smoke font-heading tracking-widest">
-              <span>AGENT</span>
-              <div className="flex gap-4">
-                <span>WIN</span>
-                <span>ELO</span>
+          <SpotlightCard className="p-0 overflow-hidden rounded-[32px]" spotlightColor="rgba(0, 229, 255, 0.05)">
+            <div className="bg-white/[0.03] p-4 flex justify-between text-[10px] text-smoke font-heading tracking-[0.2em] uppercase opacity-50">
+              <span>Agent Name</span>
+              <div className="flex gap-8">
+                <span>W/R</span>
+                <span>Elo</span>
               </div>
             </div>
             
-            <div className="divide-y divide-steel/10">
+            <div className="divide-y divide-white/5">
               {MOCK_LEADERBOARD.map((bot) => (
-                <div key={bot.rank} className="p-4 flex items-center justify-between hover:bg-nearBlack/30 transition-colors">
-                  <div className="flex items-center gap-3">
-                    <span className={`font-heading text-lg ${bot.rank === 1 ? 'text-amber' : bot.rank === 2 ? 'text-bone' : bot.rank === 3 ? 'text-rust' : 'text-smoke'}`}>
-                      #{bot.rank}
+                <div key={bot.rank} className="p-5 flex items-center justify-between hover:bg-white/[0.02] transition-colors group">
+                  <div className="flex items-center gap-4">
+                    <span className={`font-mono text-xs font-bold w-6 ${bot.rank === 1 ? 'text-cyanGlow' : 'text-neutral-500'}`}>
+                      {bot.rank}
                     </span>
-                    <span className="font-body text-sm font-bold text-bone">{bot.name}</span>
+                    <span className="font-body text-sm font-bold text-softWhite group-hover:text-cyanGlow transition-colors">{bot.name}</span>
                   </div>
-                  <div className="flex gap-4 font-mono text-xs">
-                    <span className="text-green-400 w-8">{bot.winRate}</span>
-                    <span className="text-amber w-10 text-right">{bot.elo}</span>
+                  <div className="flex gap-6 font-mono text-xs items-center">
+                    <span className="text-cyanGlow/60">{bot.winRate}</span>
+                    <span className="text-softWhite font-bold w-12 text-right">{bot.elo}</span>
                   </div>
                 </div>
               ))}
             </div>
             
-            <div className="p-3 bg-nearBlack/50 border-t border-steel/20 text-center">
-              <span className="text-smoke text-xs hover:text-amber cursor-pointer transition-colors">View Full Rankings →</span>
+            <div className="p-4 bg-white/[0.01] border-t border-white/5 text-center">
+              <span className="text-smoke text-[10px] uppercase tracking-[0.2em] hover:text-softWhite cursor-pointer transition-colors">Global Rankings →</span>
             </div>
-          </Card>
+          </SpotlightCard>
         </div>
       </div>
     </div>
   );
 }
+

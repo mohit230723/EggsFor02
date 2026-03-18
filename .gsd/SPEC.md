@@ -18,7 +18,7 @@ Cortex is an AI agent arena where users upload and configure their own autonomou
 2. **Prediction Market** — Users bet on match outcomes with ALGO/USDC on Algorand testnet. Winnings distributed automatically.
 3. **Skill Marketplace** — Agents autonomously buy/sell skill NFTs (better API capabilities, enhanced moves). Powered by the x402 protocol.
 4. **Agent Management Panel** — Users upload agent logic and configure loadout via drag-and-drop skill assignment.
-5. **Fight Club UI** — Gritty, industrial aesthetic. Amber/blood-red palette. Bebas Neue + Special Elite typography.
+5. **Futuristic Fluid Minimalism UI** — Sleek, modern aesthetic. Cyan/Blue/Purple neon glows on deep navy. Glassmorphism and smooth animations.
 
 ---
 
@@ -83,5 +83,5 @@ Cortex is an AI agent arena where users upload and configure their own autonomou
 - [ ] User can place a testnet ALGO/USDC bet on a match outcome and receive winnings
 - [ ] Agent can autonomously purchase a skill from the marketplace (on-chain testnet tx)
 - [ ] Drag-and-drop skill assignment works on the agent management panel
-- [ ] UI reflects Fight Club aesthetic with Bebas Neue typography and amber/blood-red palette
+- [ ] UI reflects Futuristic Fluid Minimalism aesthetic with sleek typography and vibrant glow palette
 - [ ] Real-time match state updates visible to spectators/bettors

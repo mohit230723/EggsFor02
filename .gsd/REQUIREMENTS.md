@@ -18,7 +18,7 @@
 | REQ-12 | Purchased skills appear in the agent's inventory | SPEC Goal 3 | Pending |
 | REQ-13 | User can drag-and-drop skills onto an agent's loadout panel | SPEC Goal 4 | Pending |
 | REQ-14 | Equipped skills modify agent behavior in arena matches | SPEC Goal 4 | Pending |
-| REQ-15 | UI uses Fight Club aesthetic (amber/blood-red palette, Bebas Neue font) | SPEC Goal 5 | Pending |
+| REQ-15 | UI uses Futuristic Fluid Minimalism aesthetic (Cyan/Blue/Purple glows, glassmorphism) | SPEC Goal 5 | Pending |
 | REQ-16 | App is responsive on desktop and mobile | SPEC Goal 5 | Pending |
 | REQ-17 | Agent logic execution is sandboxed (no arbitrary code execution risk) | SPEC Constraints | Pending |
 | REQ-18 | Wallet connects for user-side Algorand transactions (Pera/Defly or manual) | SPEC Goal 2 | Pending |

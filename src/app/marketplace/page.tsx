@@ -1,7 +1,7 @@
 import { SectionHeader } from "@/components/ui/SectionHeader";
-import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
+import SpotlightCard from "@/components/ui/SpotlightCard";
 
 // Mock Data
 const MOCK_SKILLS = [
@@ -60,65 +60,70 @@ export default function MarketplacePage() {
         }
       />
 
-      {/* Market Stats Bar */}
-      <div className="bg-charcoal/50 border border-steel/20 rounded-lg p-4 flex flex-col md:flex-row items-center justify-between gap-4 mb-4">
-        <div className="flex gap-6 text-sm">
-          <div>
+      {/* Market Stats Bar as a Spotlight Pill */}
+      <SpotlightCard 
+        className="p-4 flex flex-col md:flex-row items-center justify-between gap-4 mb-4 rounded-full"
+        spotlightColor="rgba(0, 229, 255, 0.05)"
+      >
+        <div className="flex gap-8 text-xs tracking-widest uppercase">
+          <div className="flex gap-2">
             <span className="text-smoke">24h Vol: </span>
-            <span className="text-bone font-mono font-bold">1,240 ALGO</span>
+            <span className="text-softWhite font-mono font-bold">1,240 ALGO</span>
           </div>
-          <div>
-            <span className="text-smoke">Floor Price: </span>
-            <span className="text-bone font-mono font-bold">5 ALGO</span>
+          <div className="flex gap-2">
+            <span className="text-smoke">Floor: </span>
+            <span className="text-softWhite font-mono font-bold">5 ALGO</span>
           </div>
-          <div>
+          <div className="flex gap-2">
             <span className="text-smoke">Listings: </span>
-            <span className="text-amber font-mono font-bold">24</span>
+            <span className="text-cyanGlow font-mono font-bold">24</span>
           </div>
         </div>
         
-        {/* Filter/Sort Placeholders */}
-        <div className="flex gap-2">
-          <select className="bg-nearBlack border border-steel/30 text-smoke text-sm px-3 py-1.5 rounded focus:outline-none focus:border-amber">
-            <option>All Types</option>
-            <option>Logic</option>
-            <option>Compute</option>
-            <option>State</option>
+        <div className="flex gap-3">
+          <select className="bg-transparent border-none text-smoke text-[10px] uppercase tracking-widest cursor-pointer hover:text-softWhite transition-colors focus:outline-none">
+            <option className="bg-spaceBlue">All Types</option>
+            <option className="bg-spaceBlue">Logic</option>
+            <option className="bg-spaceBlue">Compute</option>
+            <option className="bg-spaceBlue">State</option>
           </select>
-          <select className="bg-nearBlack border border-steel/30 text-smoke text-sm px-3 py-1.5 rounded focus:outline-none focus:border-amber">
-            <option>Price: Low to High</option>
-            <option>Price: High to Low</option>
-            <option>Newest</option>
+          <div className="w-[1px] h-4 bg-white/10 hidden md:block"></div>
+          <select className="bg-transparent border-none text-smoke text-[10px] uppercase tracking-widest cursor-pointer hover:text-softWhite transition-colors focus:outline-none">
+            <option className="bg-spaceBlue">Price: Low to High</option>
+            <option className="bg-spaceBlue">Price: High to Low</option>
+            <option className="bg-spaceBlue">Newest First</option>
           </select>
         </div>
-      </div>
+      </SpotlightCard>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {MOCK_SKILLS.map((skill) => (
-          <Card key={skill.id} className="flex flex-col h-full group">
-            <div className="p-5 flex-1 space-y-4">
+          <SpotlightCard key={skill.id} className="flex flex-col h-full group p-0 overflow-hidden" spotlightColor="rgba(0, 229, 255, 0.1)">
+            <div className="p-6 flex-1 space-y-5">
               <div className="flex justify-between items-start">
                 <Badge 
                   label={skill.type} 
-                  color={skill.type === "Compute" ? "amber" : skill.type === "Logic" ? "red" : "gray"} 
+                  color="gray" 
                 />
-                <span className="text-smoke text-xs font-mono">By: {skill.seller}</span>
+                <span className="text-smoke text-[10px] font-mono tracking-tighter uppercase opacity-50">By: {skill.seller}</span>
               </div>
               
               <div>
-                <h3 className="text-xl font-heading tracking-widest text-bone uppercase group-hover:text-amber transition-colors">{skill.name}</h3>
-                <p className="text-smoke text-sm mt-2 line-clamp-3 leading-relaxed">{skill.description}</p>
+                <h3 className="text-xl font-heading tracking-widest text-softWhite uppercase group-hover:text-cyanGlow transition-colors duration-300">{skill.name}</h3>
+                <p className="text-smoke text-sm mt-3 line-clamp-3 leading-relaxed opacity-80">{skill.description}</p>
               </div>
             </div>
             
-            <div className="p-5 border-t border-steel/20 bg-nearBlack/30 flex items-center justify-between">
+            <div className="px-6 py-5 border-t border-white/5 bg-white/[0.01] flex items-center justify-between">
               <div>
-                <span className="text-smoke text-xs uppercase tracking-wider block mb-0.5">Price</span>
-                <span className="text-bone font-mono font-bold text-lg">{skill.price}</span>
+                <span className="text-smoke text-[10px] uppercase tracking-widest block mb-1 opacity-50">Acquisition</span>
+                <span className="text-softWhite font-mono font-bold text-lg">{skill.price}</span>
               </div>
-              <Button variant="primary" size="sm">Buy</Button>
+              <button className="bg-white/5 hover:bg-white/10 border border-white/10 text-softWhite px-6 py-2 rounded-full text-[10px] uppercase tracking-[0.2em] transition-all duration-300">
+                Purchase
+              </button>
             </div>
-          </Card>
+          </SpotlightCard>
         ))}
       </div>
     </div>

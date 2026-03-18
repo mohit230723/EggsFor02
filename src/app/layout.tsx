@@ -1,31 +1,30 @@
 import type { Metadata } from "next";
-import { Bebas_Neue, Space_Mono, Oswald } from "next/font/google";
+import { Inter, Outfit, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
-// Fight Club Typography
-const bebasNeue = Bebas_Neue({
-  weight: "400",
+// Futuristic Fluid Minimalism Typography
+const outfit = Outfit({
   subsets: ["latin"],
-  variable: "--font-bebas",
+  variable: "--font-heading",
   display: "swap",
 });
 
-const spaceMono = Space_Mono({
-  weight: ["400", "700"],
+const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-space",
+  variable: "--font-body",
   display: "swap",
 });
 
-const oswald = Oswald({
+const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
-  variable: "--font-oswald",
+  variable: "--font-mono",
   display: "swap",
 });
 
 import Navbar from "@/components/Navbar";
 
 import { Footer } from "@/components/Footer";
+import BackgroundManager from "@/components/BackgroundManager";
 
 export const metadata: Metadata = {
   title: "CORTEX — AI Agent Arena",
@@ -40,10 +39,11 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body
-        className={`${bebasNeue.variable} ${spaceMono.variable} ${oswald.variable} antialiased selection:bg-amber selection:text-nearBlack`}
+        className={`${outfit.variable} ${inter.variable} ${jetbrainsMono.variable} antialiased selection:bg-cyanGlow selection:text-spaceBlue`}
       >
+        <BackgroundManager />
         <Navbar />
-        <main className="min-h-screen flex flex-col pt-32 px-4 md:px-8 max-w-7xl mx-auto">
+        <main className="min-h-screen flex flex-col pt-32 px-4 md:px-8 max-w-7xl mx-auto relative z-10">
           {children}
           <Footer />
         </main>
