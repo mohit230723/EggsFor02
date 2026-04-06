@@ -2,21 +2,30 @@ import React from "react";
 
 export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
   variant?: "default" | "highlight" | "danger";
+  accentColor?: "pink" | "purple" | "green" | "blue" | "orange";
   children: React.ReactNode;
 }
 
-export function Card({ variant = "default", className = "", children, ...props }: CardProps) {
-  const baseClasses = "bg-charcoal border shadow-md transition-all duration-300";
-  
-  const variantClasses = {
-    default: "border-steel/30 hover:border-steel/60 hover:shadow-lg",
-    highlight: "border-steel/30 border-l-4 border-l-amber hover:border-steel/60 hover:shadow-amber/20 hover:shadow-lg",
-    danger: "border-steel/30 border-l-4 border-l-bloodRed hover:border-steel/60 hover:shadow-bloodRed/20 hover:shadow-lg",
+export function Card({ variant = "default", accentColor, className = "", children, ...props }: CardProps) {
+  const accentMap: Record<string, string> = {
+    pink: "punk-card-pink",
+    purple: "punk-card-purple",
+    green: "punk-card-green",
+    blue: "punk-card-blue",
+    orange: "",
   };
+
+  const variantClasses = {
+    default: "",
+    highlight: "border-l-[6px] border-l-punkPink",
+    danger: "border-l-[6px] border-l-punkRed",
+  };
+
+  const accent = accentColor ? accentMap[accentColor] : "";
 
   return (
     <div 
-      className={`${baseClasses} ${variantClasses[variant]} ${className}`}
+      className={`punk-card ${accent} ${variantClasses[variant]} ${className}`}
       {...props}
     >
       {children}

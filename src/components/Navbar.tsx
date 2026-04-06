@@ -1,32 +1,81 @@
 "use client";
 
+import Link from "next/link";
 import { usePathname } from "next/navigation";
-import PillNav from "./ui/PillNav";
+
+const NAV_ITEMS = [
+  { label: "Home", href: "/", jp: "ホーム" },
+  { label: "Arena", href: "/arena", jp: "アリーナ" },
+  { label: "Predictions", href: "/predictions", jp: "予測" },
+  { label: "Market", href: "/marketplace", jp: "市場" },
+  { label: "Agents", href: "/agents", jp: "エージェント" },
+];
 
 export default function Navbar() {
   const pathname = usePathname();
 
   return (
-    <div className="flex justify-center w-full relative h-[80px]">
-      <PillNav
-        logo="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmZmZmIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PHBhdGggZD0iTTEyIDJMMiA3bDEwIDUgMTAtNS0xMC01ek0yIDE3bDEwIDUgMTAtNU0yIDEybDEwIDUgMTAtNSIvPjwvc3ZnPg=="
-        logoAlt="Cortex Logo"
-        items={[
-          { label: "Home", href: "/" },
-          { label: "Arena", href: "/arena" },
-          { label: "Predictions", href: "/predictions" },
-          { label: "Marketplace", href: "/marketplace" },
-          { label: "Agents", href: "/agents" },
-        ]}
-        activeHref={pathname}
-        className="custom-nav"
-        ease="power2.easeOut"
-        baseColor="#0A0F1B" // deepNavy background base for pills
-        pillColor="rgba(255, 255, 255, 0.05)" // translucent pill background
-        hoveredPillTextColor="#0A0F1B" // hover text color (dark)
-        pillTextColor="#F8FAFC" // default text color
-        initialLoadAnimation={true}
-      />
-    </div>
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-bgCream/95 backdrop-blur-sm border-b-4 border-inkBlack">
+      <div className="max-w-7xl mx-auto px-4 md:px-8 flex items-center justify-between h-20">
+        {/* Logo */}
+        <Link href="/" className="flex items-center gap-2 group">
+          <span className="font-heading text-2xl md:text-3xl text-inkBlack uppercase tracking-tight group-hover:text-punkPink transition-colors">
+            CORTEX
+          </span>
+          <span className="font-jp text-xs text-punkPink font-bold opacity-60 hidden sm:inline">
+            コーテックス
+          </span>
+        </Link>
+
+        {/* Nav Links */}
+        <div className="hidden md:flex items-center gap-1">
+          {NAV_ITEMS.map((item) => {
+            const isActive = pathname === item.href;
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={`
+                  relative px-4 py-2 font-body font-bold text-sm uppercase tracking-wider rounded-lg transition-all duration-200
+                  ${isActive
+                    ? "bg-inkBlack text-bgCream shadow-[3px_3px_0px_#FF2D8A]"
+                    : "text-inkBlack hover:bg-punkPink/10 hover:text-punkPink"
+                  }
+                `}
+              >
+                {item.label}
+              </Link>
+            );
+          })}
+        </div>
+
+        {/* Connect Wallet */}
+        <button className="punk-btn bg-punkYellow text-inkBlack px-5 py-2 rounded-lg text-xs font-bold uppercase tracking-wider">
+          Connect Wallet
+        </button>
+      </div>
+
+      {/* Mobile Nav */}
+      <div className="md:hidden flex overflow-x-auto gap-1 px-4 pb-3 -mt-1 scrollbar-hide">
+        {NAV_ITEMS.map((item) => {
+          const isActive = pathname === item.href;
+          return (
+            <Link
+              key={item.href}
+              href={item.href}
+              className={`
+                whitespace-nowrap px-3 py-1.5 font-body font-bold text-xs uppercase tracking-wider rounded-md transition-all
+                ${isActive
+                  ? "bg-inkBlack text-bgCream"
+                  : "text-streetGray hover:text-punkPink"
+                }
+              `}
+            >
+              {item.label}
+            </Link>
+          );
+        })}
+      </div>
+    </nav>
   );
 }

@@ -4,7 +4,20 @@ import React, { useState } from "react";
 import { Button } from "./ui/Button";
 import { Card } from "./ui/Card";
 import { Badge } from "./ui/Badge";
-import { MatchResult } from "@/lib/engine/types";
+
+interface MatchTurn {
+  turnNumber: number;
+  p1Move: unknown;
+  p2Move: unknown;
+  stateAfter: unknown;
+  logMessages: string[];
+}
+
+interface MatchResult {
+  winnerId: string | null;
+  reason: string;
+  turns: MatchTurn[];
+}
 
 const DEFAULT_AGENTS = {
   rps: {
@@ -89,8 +102,8 @@ export function ArenaMatchRunner() {
       if (!res.ok) throw new Error(data.error || "Simulation failed");
       
       setResult(data);
-    } catch (err: any) {
-      setError(err.message);
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : "Unknown error");
     } finally {
       setIsRunning(false);
     }
@@ -101,14 +114,17 @@ export function ArenaMatchRunner() {
       <Card className="p-6">
         <div className="flex flex-col md:flex-row gap-6 mb-6">
           <div className="flex-1">
-            <h3 className="text-xl font-heading text-amber tracking-widest mb-4 uppercase">Match Setup</h3>
+            <h3 className="text-xl font-heading text-punkPurple tracking-widest mb-4 uppercase flex items-center gap-2">
+              Match Setup
+              <span className="font-jp text-sm text-punkPink opacity-50">試合</span>
+            </h3>
             <div className="space-y-4">
               <div>
-                <label className="text-smoke text-sm block mb-1">Game Protocol</label>
+                <label className="text-streetGray text-sm block mb-1 font-bold uppercase">Game Protocol</label>
                 <select 
                   value={gameId} 
                   onChange={handleGameChange}
-                  className="w-full bg-nearBlack border border-steel/30 text-bone p-2 focus:outline-none focus:border-amber font-mono text-sm"
+                  className="w-full bg-bgCard border-3 border-inkBlack text-inkBlack p-2 focus:outline-none focus:border-punkPink font-mono text-sm rounded-lg"
                 >
                   <option value="rps">Rock Paper Scissors</option>
                   <option value="tictactoe">Tic-Tac-Toe</option>
@@ -121,65 +137,66 @@ export function ArenaMatchRunner() {
                 onClick={simulateMatch}
                 disabled={isRunning}
               >
-                {isRunning ? "Simulating..." : "Execute Local Simulation"}
+                {isRunning ? "Simulating..." : "Execute Simulation ⚡"}
               </Button>
-              {error && <p className="text-bloodRed text-sm mt-2 font-mono">Terminal Error: {error}</p>}
+              {error && <p className="text-punkRed text-sm mt-2 font-mono font-bold">Error: {error}</p>}
             </div>
           </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
-            <label className="text-smoke text-sm block mb-1">Agent 1 Logic (JavaScript)</label>
+            <label className="text-streetGray text-sm block mb-1 font-bold uppercase">Agent 1 Logic (JavaScript)</label>
             <textarea 
               value={p1Code}
               onChange={(e) => setP1Code(e.target.value)}
-              className="w-full h-48 bg-nearBlack/80 border border-steel/20 text-green-400 font-mono text-xs p-3 focus:outline-none focus:border-amber/50"
+              className="w-full h-48 bg-inkBlack border-3 border-punkPink text-punkGreen font-mono text-xs p-3 focus:outline-none focus:border-punkPurple rounded-lg"
               spellCheck={false}
             />
           </div>
           <div>
-            <label className="text-smoke text-sm block mb-1">Agent 2 Logic (JavaScript)</label>
+            <label className="text-streetGray text-sm block mb-1 font-bold uppercase">Agent 2 Logic (JavaScript)</label>
             <textarea 
               value={p2Code}
               onChange={(e) => setP2Code(e.target.value)}
-              className="w-full h-48 bg-nearBlack/80 border border-steel/20 text-blue-400 font-mono text-xs p-3 focus:outline-none focus:border-amber/50"
+              className="w-full h-48 bg-inkBlack border-3 border-punkBlue text-punkGreen font-mono text-xs p-3 focus:outline-none focus:border-punkPurple rounded-lg"
               spellCheck={false}
             />
           </div>
         </div>
       </Card>
 
-      {/* Results Rendering */}
+      {/* Results */}
       {result && (
-        <Card variant={result.winnerId ? "highlight" : "default"} className="p-6 border-t-4 border-t-amber">
-          <h3 className="text-2xl font-heading text-bone tracking-widest uppercase mb-6 flex items-center gap-3">
-            <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+        <Card variant="highlight" className="p-6">
+          <h3 className="text-2xl font-heading text-inkBlack tracking-widest uppercase mb-6 flex items-center gap-3">
+            <span className="w-3 h-3 rounded-full bg-punkGreen animate-pulse" />
             Simulation Telemetry
+            <span className="font-jp text-sm text-punkPink opacity-50">テレメトリー</span>
           </h3>
           
-          <div className="bg-nearBlack border border-steel/20 h-64 overflow-y-auto p-4 space-y-3 font-mono text-[11px] md:text-xs">
+          <div className="bg-inkBlack border-3 border-borderHard rounded-lg h-64 overflow-y-auto p-4 space-y-3 font-mono text-[11px] md:text-xs">
             {result.turns.map((turn, i) => (
-              <div key={i} className="border-b border-steel/10 pb-2 mb-2 last:border-0">
-                <div className="text-steel mb-1">=== TURN {turn.turnNumber} ===</div>
+              <div key={i} className="border-b border-white/10 pb-2 mb-2 last:border-0">
+                <div className="text-streetGray mb-1">=== TURN {turn.turnNumber} ===</div>
                 <div className="flex flex-col md:flex-row gap-2 md:gap-8">
-                  <div className="text-smoke">State Before: {JSON.stringify(i === 0 ? "START" : result.turns[i-1].stateAfter)}</div>
-                  <div className="text-green-400">P1 Move: {JSON.stringify(turn.p1Move)}</div>
-                  <div className="text-blue-400">P2 Move: {JSON.stringify(turn.p2Move)}</div>
+                  <div className="text-white/50">State Before: {JSON.stringify(i === 0 ? "START" : result.turns[i-1].stateAfter)}</div>
+                  <div className="text-punkGreen">P1 Move: {JSON.stringify(turn.p1Move)}</div>
+                  <div className="text-punkBlue">P2 Move: {JSON.stringify(turn.p2Move)}</div>
                 </div>
                 {turn.logMessages.map((log, li) => (
-                  <div key={li} className="text-amber/80 ml-4">› {log}</div>
+                  <div key={li} className="text-punkYellow ml-4">› {log}</div>
                 ))}
               </div>
             ))}
           </div>
 
-          <div className="mt-6 p-4 bg-charcoal border border-steel/30 text-center">
-            <p className="text-smoke text-sm uppercase tracking-wider mb-2">Final Resolution</p>
-            <p className="text-3xl font-heading tracking-widest text-bone">
-              {result.winnerId === "p1" ? "AGENT 1 VICTORIOUS" : result.winnerId === "p2" ? "AGENT 2 VICTORIOUS" : "MUTUAL DESTRUCTION (DRAW)"}
+          <div className="mt-6 p-4 punk-card text-center">
+            <p className="text-streetGray text-sm uppercase tracking-wider mb-2">Final Resolution</p>
+            <p className="text-3xl font-heading tracking-widest text-inkBlack">
+              {result.winnerId === "p1" ? "AGENT 1 WINS!! 🏆" : result.winnerId === "p2" ? "AGENT 2 WINS!! 🏆" : "DRAW 🤝"}
             </p>
-            <p className="text-amber mt-2 font-mono text-sm">{result.reason}</p>
+            <p className="text-punkPink mt-2 font-mono text-sm font-bold">{result.reason}</p>
           </div>
         </Card>
       )}

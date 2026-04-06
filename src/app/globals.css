@@ -1,37 +1,58 @@
 @import "tailwindcss";
 
 @theme inline {
-  /* Colors - Futuristic Fluid Minimalism (Reference Image) */
-  --color-spaceBlue: #0A0F1B;
-  --color-deepNavy: #111A31;
-  --color-mutedBlue: #2A4474;
-  --color-sand: #D5CABB;
-  --color-cream: #EAE3D9;
-  --color-softWhite: #F8FAFC;
-  --color-pureWhite: #FFFFFF;
-  --color-cyanGlow: #22D3EE;
-  --color-blueGlow: #3B82F6;
-  --color-purpleGlow: #A78BFA;
+  /* ========================================
+     SHIBUYA PUNK COLOR SYSTEM
+     Early 2000s Japanese street art palette
+     ======================================== */
+  
+  /* Primary Accents */
+  --color-punkPink: #FF2D8A;
+  --color-punkPurple: #9B30FF;
+  --color-punkGreen: #39FF14;
+  --color-punkBlue: #00BFFF;
+  --color-punkOrange: #FF6B2B;
+  --color-punkRed: #FF3131;
+  --color-punkYellow: #FFE600;
+
+  /* Backgrounds */
+  --color-bgCream: #FFF5E1;
+  --color-bgLight: #FFFAF0;
+  --color-bgDark: #1A1A2E;
+  --color-bgCard: #FFFFFF;
+
+  /* Text */
+  --color-inkBlack: #1A1A1A;
+  --color-inkDark: #2D2D2D;
+  --color-streetGray: #6B6B6B;
+  --color-mutedText: #999999;
+
+  /* Utility */
+  --color-borderHard: #1A1A1A;
+  --color-borderSoft: #E0E0E0;
 
   /* Typography */
-  --font-heading: var(--font-heading);
-  --font-body: var(--font-body);
-  --font-mono: var(--font-mono);
+  --font-heading: 'Dela Gothic One', 'Noto Sans JP', sans-serif;
+  --font-body: 'Space Grotesk', 'Noto Sans JP', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --font-jp: 'Noto Sans JP', sans-serif;
 }
 
 @layer base {
   :root {
-    color-scheme: dark;
+    color-scheme: light;
   }
 
   body {
-    @apply bg-spaceBlue text-softWhite font-body antialiased;
+    @apply bg-bgCream text-inkBlack font-body antialiased;
+    background-color: #FFF5E1 !important;
+    color: #1A1A1A;
     position: relative;
     min-height: 100vh;
     overflow-x: hidden;
   }
 
-  /* Extremely subtle grain texture */
+  /* Halftone dot texture overlay */
   body::before {
     content: "";
     position: fixed;
@@ -41,59 +62,254 @@
     height: 100vh;
     pointer-events: none;
     z-index: 50;
-    opacity: 0.02;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    opacity: 0.03;
+    background-image: radial-gradient(circle, #1A1A1A 1px, transparent 1px);
+    background-size: 16px 16px;
   }
 
-  /* Setup custom scrollbar for dark fluid theme */
+  /* Custom scrollbar — punk style */
   ::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
+    width: 10px;
+    height: 10px;
   }
   ::-webkit-scrollbar-track {
-    @apply bg-spaceBlue;
+    @apply bg-bgCream;
+    border-left: 3px solid #1A1A1A;
   }
   ::-webkit-scrollbar-thumb {
-    @apply bg-deepNavy border border-mutedBlue/10 rounded-full;
+    @apply bg-punkPink;
+    border: 2px solid #1A1A1A;
   }
   ::-webkit-scrollbar-thumb:hover {
-    @apply bg-mutedBlue/80;
+    @apply bg-punkPurple;
+  }
+
+  /* Heading defaults */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading font-normal tracking-tight;
   }
 }
 
 @layer components {
-  /* Fluid Typography */
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-heading font-medium tracking-tight;
+  /* ========================================
+     COMIC / PUNK CARD SYSTEM
+     Bold borders, hard shadows, bright fills
+     ======================================== */
+  .punk-card {
+    background: #FFFFFF;
+    border: 3px solid #1A1A1A;
+    border-radius: 16px;
+    box-shadow: 6px 6px 0px #1A1A1A;
+    transition: all 0.2s ease;
+    position: relative;
+    overflow: hidden;
   }
 
-  /* Glassmorphism Classes */
-  .glass-panel {
-    background: rgba(255, 255, 255, 0.03);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    border-radius: 24px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
+  .punk-card:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 8px 8px 0px #1A1A1A;
   }
 
-  .glass-panel:hover {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    box-shadow: 0 8px 32px rgba(34, 211, 238, 0.05);
+  .punk-card-pink {
+    border-color: #FF2D8A;
+    box-shadow: 6px 6px 0px #FF2D8A;
+  }
+  .punk-card-pink:hover {
+    box-shadow: 8px 8px 0px #FF2D8A;
   }
 
-  /* Soft Glow Text Utilities */
-  .text-glow-cyan {
-    text-shadow: 0 0 12px rgba(34, 211, 238, 0.4);
+  .punk-card-purple {
+    border-color: #9B30FF;
+    box-shadow: 6px 6px 0px #9B30FF;
   }
-  
-  .text-glow-purple {
-    text-shadow: 0 0 12px rgba(167, 139, 250, 0.4);
+  .punk-card-purple:hover {
+    box-shadow: 8px 8px 0px #9B30FF;
   }
 
-  .text-glow-white {
-    text-shadow: 0 0 15px rgba(241, 245, 249, 0.3);
+  .punk-card-green {
+    border-color: #39FF14;
+    box-shadow: 6px 6px 0px #39FF14;
+  }
+  .punk-card-green:hover {
+    box-shadow: 8px 8px 0px #39FF14;
+  }
+
+  .punk-card-blue {
+    border-color: #00BFFF;
+    box-shadow: 6px 6px 0px #00BFFF;
+  }
+  .punk-card-blue:hover {
+    box-shadow: 8px 8px 0px #00BFFF;
+  }
+
+  /* ========================================
+     STICKER BADGES
+     Slightly rotated, bold fills
+     ======================================== */
+  .sticker {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 12px;
+    border: 2px solid #1A1A1A;
+    border-radius: 4px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    transform: rotate(-1deg);
+    box-shadow: 2px 2px 0px #1A1A1A;
+  }
+
+  .sticker-pink {
+    @apply bg-punkPink text-white;
+  }
+  .sticker-purple {
+    @apply bg-punkPurple text-white;
+  }
+  .sticker-green {
+    @apply bg-punkGreen text-inkBlack;
+  }
+  .sticker-blue {
+    @apply bg-punkBlue text-white;
+  }
+  .sticker-orange {
+    @apply bg-punkOrange text-white;
+  }
+  .sticker-red {
+    @apply bg-punkRed text-white;
+  }
+  .sticker-yellow {
+    @apply bg-punkYellow text-inkBlack;
+  }
+  .sticker-dark {
+    @apply bg-inkBlack text-white;
+  }
+
+  /* ========================================
+     PUNK BUTTONS
+     Chunky, tactile, comic-book press
+     ======================================== */
+  .punk-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Dela Gothic One', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border: 3px solid #1A1A1A;
+    box-shadow: 4px 4px 0px #1A1A1A;
+    transition: all 0.15s ease;
+    cursor: pointer;
+    position: relative;
+  }
+
+  .punk-btn:hover {
+    transform: translate(-1px, -1px);
+    box-shadow: 5px 5px 0px #1A1A1A;
+  }
+
+  .punk-btn:active {
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0px #1A1A1A;
+  }
+
+  /* ========================================
+     JAPANESE ACCENT TEXT
+     Decorative katakana/kanji elements
+     ======================================== */
+  .jp-accent {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 900;
+    opacity: 0.08;
+    user-select: none;
+    pointer-events: none;
+  }
+
+  .jp-accent-visible {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 700;
+    opacity: 0.4;
+    user-select: none;
+  }
+
+  /* ========================================
+     HALFTONE & TEXTURE PATTERNS
+     ======================================== */
+  .halftone-bg {
+    background-image: radial-gradient(circle, #1A1A1A 1px, transparent 1px);
+    background-size: 8px 8px;
+  }
+
+  .checkerboard-bg {
+    background-image: 
+      linear-gradient(45deg, rgba(0,0,0,0.03) 25%, transparent 25%),
+      linear-gradient(-45deg, rgba(0,0,0,0.03) 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, rgba(0,0,0,0.03) 75%),
+      linear-gradient(-45deg, transparent 75%, rgba(0,0,0,0.03) 75%);
+    background-size: 20px 20px;
+    background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+  }
+
+  .stripe-bg {
+    background-image: repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 4px,
+      rgba(0,0,0,0.03) 4px,
+      rgba(0,0,0,0.03) 8px
+    );
+  }
+
+  /* ========================================
+     MARQUEE ANIMATION
+     Shibuya-style scrolling text
+     ======================================== */
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  .marquee {
+    display: flex;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .marquee-inner {
+    display: flex;
+    animation: marquee 20s linear infinite;
+  }
+
+  /* ========================================
+     UTILITY
+     ======================================== */
+  .text-stroke {
+    -webkit-text-stroke: 2px #1A1A1A;
+    color: transparent;
+  }
+
+  .text-stroke-pink {
+    -webkit-text-stroke: 2px #FF2D8A;
+    color: transparent;
+  }
+
+  .punk-divider {
+    height: 4px;
+    background: repeating-linear-gradient(
+      90deg,
+      #FF2D8A 0px,
+      #FF2D8A 20px,
+      #9B30FF 20px,
+      #9B30FF 40px,
+      #39FF14 40px,
+      #39FF14 60px,
+      #00BFFF 60px,
+      #00BFFF 80px,
+      #FFE600 80px,
+      #FFE600 100px,
+      #FF6B2B 100px,
+      #FF6B2B 120px
+    );
   }
 }

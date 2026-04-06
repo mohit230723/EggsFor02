@@ -1,8 +1,5 @@
 import { SectionHeader } from "@/components/ui/SectionHeader";
-import { EmptyState } from "@/components/ui/EmptyState";
-import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
-import { Badge } from "@/components/ui/Badge";
 import { ArenaMatchRunner } from "@/components/ArenaMatchRunner";
 import { MatchCard } from "@/components/MatchCard";
 import SpotlightCard from "@/components/ui/SpotlightCard";
@@ -23,38 +20,38 @@ const MOCK_LEADERBOARD = [
   { rank: 5, name: "DegenScript", elo: 1840, winRate: "49%" },
 ];
 
+const RANK_COLORS = ["text-punkPink", "text-punkPurple", "text-punkBlue", "text-punkOrange", "text-streetGray"];
+
 export default function ArenaPage() {
   return (
-    <div className="space-y-8 animate-in fade-in duration-500 pb-16">
+    <div className="space-y-8 pb-16">
       <SectionHeader 
         title="THE ARENA" 
+        jpTitle="アリーナ"
         subtitle="Watch live matches or throw your agent into the bloodbath." 
-        action={<Button variant="primary">Create Match</Button>}
+        action={<Button variant="primary">Create Match ⚔️</Button>}
       />
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Active Matches Column */}
         <div className="lg:col-span-2 space-y-12">
           
-          {/* Phase 2: Sandbox Runner */}
+          {/* Sandbox Runner */}
           <div className="space-y-4">
-            <h2 className="text-3xl text-amber font-heading tracking-widest hidden">SANDBOX</h2>
             <ArenaMatchRunner />
           </div>
 
           <div>
             <div className="flex items-center gap-3 mb-6">
-              <h2 className="text-2xl text-softWhite font-heading tracking-widest uppercase">Live Combat</h2>
-              <div className="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[10px] text-smoke font-mono uppercase tracking-widest">
-                Network: Algorand Testnet
-              </div>
+              <h2 className="text-2xl text-inkBlack font-heading tracking-widest uppercase">Live Combat</h2>
+              <span className="sticker sticker-green text-[9px]">Algorand Testnet</span>
             </div>
             
             <div className="space-y-6">
               {MOCK_MATCHES.map((match) => (
                 <MatchCard 
                   key={match.id}
-                  status={match.status === "BETTING_OPEN" ? "BETTING" : match.status as any}
+                  status={match.status === "BETTING_OPEN" ? "BETTING" : match.status as "LIVE" | "WAITING"}
                   gameType={match.game}
                   stake={match.pool}
                   p1={{ name: match.p1, winRate: "50%" }}
@@ -66,12 +63,15 @@ export default function ArenaPage() {
 
         </div>
 
-        {/* Sidebar */}
-        <div className="space-y-8">
-          <h2 className="text-2xl text-softWhite font-heading tracking-widest uppercase text-center">Leaderboard</h2>
+        {/* Sidebar — Leaderboard */}
+        <div className="space-y-6">
+          <h2 className="text-2xl text-inkBlack font-heading tracking-widest uppercase text-center flex items-center justify-center gap-2">
+            Leaderboard
+            <span className="font-jp text-sm text-punkPink opacity-50 font-bold">順位</span>
+          </h2>
           
-          <SpotlightCard className="p-0 overflow-hidden rounded-[32px]" spotlightColor="rgba(0, 229, 255, 0.05)">
-            <div className="bg-white/[0.03] p-4 flex justify-between text-[10px] text-smoke font-heading tracking-[0.2em] uppercase opacity-50">
+          <SpotlightCard className="p-0 overflow-hidden" accentColor="pink">
+            <div className="bg-inkBlack p-4 flex justify-between text-[10px] text-white font-body tracking-[0.2em] uppercase font-bold">
               <span>Agent Name</span>
               <div className="flex gap-8">
                 <span>W/R</span>
@@ -79,25 +79,27 @@ export default function ArenaPage() {
               </div>
             </div>
             
-            <div className="divide-y divide-white/5">
-              {MOCK_LEADERBOARD.map((bot) => (
-                <div key={bot.rank} className="p-5 flex items-center justify-between hover:bg-white/[0.02] transition-colors group">
+            <div className="divide-y divide-borderSoft">
+              {MOCK_LEADERBOARD.map((bot, idx) => (
+                <div key={bot.rank} className="p-5 flex items-center justify-between hover:bg-punkPink/5 transition-colors group">
                   <div className="flex items-center gap-4">
-                    <span className={`font-mono text-xs font-bold w-6 ${bot.rank === 1 ? 'text-cyanGlow' : 'text-neutral-500'}`}>
+                    <span className={`font-mono text-sm font-bold w-6 ${RANK_COLORS[idx]}`}>
                       {bot.rank}
                     </span>
-                    <span className="font-body text-sm font-bold text-softWhite group-hover:text-cyanGlow transition-colors">{bot.name}</span>
+                    <span className="font-body text-sm font-bold text-inkBlack group-hover:text-punkPink transition-colors">{bot.name}</span>
                   </div>
                   <div className="flex gap-6 font-mono text-xs items-center">
-                    <span className="text-cyanGlow/60">{bot.winRate}</span>
-                    <span className="text-softWhite font-bold w-12 text-right">{bot.elo}</span>
+                    <span className="text-punkGreen font-bold">{bot.winRate}</span>
+                    <span className="text-inkBlack font-bold w-12 text-right">{bot.elo}</span>
                   </div>
                 </div>
               ))}
             </div>
             
-            <div className="p-4 bg-white/[0.01] border-t border-white/5 text-center">
-              <span className="text-smoke text-[10px] uppercase tracking-[0.2em] hover:text-softWhite cursor-pointer transition-colors">Global Rankings →</span>
+            <div className="p-4 bg-bgCream border-t-2 border-inkBlack text-center">
+              <span className="text-streetGray text-xs uppercase tracking-widest hover:text-punkPink cursor-pointer transition-colors font-bold">
+                Global Rankings →
+              </span>
             </div>
           </SpotlightCard>
         </div>
@@ -105,4 +107,3 @@ export default function ArenaPage() {
     </div>
   );
 }
-

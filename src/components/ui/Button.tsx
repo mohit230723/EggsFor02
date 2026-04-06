@@ -16,19 +16,19 @@ export function Button({
   children, 
   ...props 
 }: ButtonProps) {
-  const baseClasses = "font-heading uppercase tracking-wider transition-all duration-300 inline-flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed";
+  const baseClasses = "punk-btn font-heading uppercase tracking-wider inline-flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed rounded-lg";
   
   const variantClasses = {
-    primary: "bg-amber text-nearBlack hover:bg-bone shadow-md hover:shadow-amber/30 hover:shadow-lg",
-    secondary: "border border-bone text-bone hover:bg-charcoal",
-    danger: "bg-bloodRed text-bone hover:bg-rust shadow-md hover:shadow-bloodRed/30 hover:shadow-lg",
-    ghost: "text-smoke hover:text-amber hover:underline",
+    primary: "bg-punkPink text-white hover:bg-punkPurple",
+    secondary: "bg-bgCard text-inkBlack hover:bg-punkYellow",
+    danger: "bg-punkRed text-white hover:bg-punkOrange",
+    ghost: "bg-transparent border-transparent shadow-none text-streetGray hover:text-punkPink hover:border-transparent",
   };
   
   const sizeClasses = {
-    sm: "px-4 py-1.5 text-sm",
-    md: "px-6 py-2.5 text-lg",
-    lg: "px-8 py-3 text-xl",
+    sm: "px-4 py-1.5 text-xs",
+    md: "px-6 py-2.5 text-sm",
+    lg: "px-8 py-3 text-base",
   };
 
   const classes = `${baseClasses} ${variantClasses[variant]} ${sizeClasses[size]} ${className}`;

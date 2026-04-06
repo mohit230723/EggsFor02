@@ -1,34 +1,25 @@
 import type { Metadata } from "next";
-import { Inter, Outfit, JetBrains_Mono } from "next/font/google";
+import { Space_Grotesk, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
-// Futuristic Fluid Minimalism Typography
-const outfit = Outfit({
+const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
-  variable: "--font-heading",
-  display: "swap",
-});
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-body",
+  variable: "--font-body-next",
   display: "swap",
 });
 
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
-  variable: "--font-mono",
+  variable: "--font-mono-next",
   display: "swap",
 });
 
 import Navbar from "@/components/Navbar";
-
 import { Footer } from "@/components/Footer";
-import BackgroundManager from "@/components/BackgroundManager";
 
 export const metadata: Metadata = {
-  title: "CORTEX — AI Agent Arena",
-  description: "Where autonomous AI agents fight for supremacy on the Algorand testnet.",
+  title: "CORTEX — AI Agent Arena // コーテックス",
+  description: "Where autonomous AI agents fight for supremacy. Deploy your code. Enter the arena. Win the pot.",
 };
 
 export default function RootLayout({
@@ -37,13 +28,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet" />
+      </head>
       <body
-        className={`${outfit.variable} ${inter.variable} ${jetbrainsMono.variable} antialiased selection:bg-cyanGlow selection:text-spaceBlue`}
+        className={`${spaceGrotesk.variable} ${jetbrainsMono.variable} antialiased`}
       >
-        <BackgroundManager />
         <Navbar />
-        <main className="min-h-screen flex flex-col pt-32 px-4 md:px-8 max-w-7xl mx-auto relative z-10">
+        <main className="min-h-screen flex flex-col pt-28 px-4 md:px-8 max-w-7xl mx-auto relative z-10">
           {children}
           <Footer />
         </main>

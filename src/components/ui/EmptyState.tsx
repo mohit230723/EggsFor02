@@ -19,9 +19,9 @@ export function EmptyState({
   className = "" 
 }: EmptyStateProps) {
   return (
-    <div className={`bg-charcoal border border-steel/30 p-12 flex flex-col items-center justify-center text-center ${className}`}>
-      <h3 className="text-2xl text-amber font-heading tracking-widest mb-2 uppercase">{title}</h3>
-      <p className="text-smoke mb-6 max-w-md">{description}</p>
+    <div className={`punk-card p-12 flex flex-col items-center justify-center text-center stripe-bg ${className}`}>
+      <h3 className="text-2xl text-punkPurple font-heading tracking-widest mb-2 uppercase">{title}</h3>
+      <p className="text-streetGray mb-6 max-w-md font-body">{description}</p>
       
       {actionLabel && (
         actionHref ? (
