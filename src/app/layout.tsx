@@ -16,6 +16,7 @@ const jetbrainsMono = JetBrains_Mono({
 
 import Navbar from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
+import { Providers } from "@/components/Providers";
 
 export const metadata: Metadata = {
   title: "CORTEX — AI Agent Arena // コーテックス",
@@ -37,11 +38,13 @@ export default function RootLayout({
       <body
         className={`${spaceGrotesk.variable} ${jetbrainsMono.variable} antialiased`}
       >
-        <Navbar />
-        <main className="min-h-screen flex flex-col pt-28 px-4 md:px-8 max-w-7xl mx-auto relative z-10">
-          {children}
-          <Footer />
-        </main>
+        <Providers>
+          <Navbar />
+          <main className="min-h-screen flex flex-col pt-28 px-4 md:px-8 max-w-7xl mx-auto relative z-10">
+            {children}
+            <Footer />
+          </main>
+        </Providers>
       </body>
     </html>
   );
