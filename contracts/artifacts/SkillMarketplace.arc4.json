@@ -1,0 +1,110 @@
+{
+  "name": "SkillMarketplace",
+  "desc": "",
+  "methods": [
+    {
+      "name": "createApplication",
+      "args": [],
+      "returns": {
+        "type": "void"
+      }
+    },
+    {
+      "name": "listSkill",
+      "desc": "List a new skill on the marketplace.\nRequires an MBR payment for box storage.",
+      "args": [
+        {
+          "name": "mbrPayment",
+          "type": "pay"
+        },
+        {
+          "name": "name",
+          "type": "byte[64]"
+        },
+        {
+          "name": "description",
+          "type": "byte[256]"
+        },
+        {
+          "name": "skillType",
+          "type": "byte[16]"
+        },
+        {
+          "name": "version",
+          "type": "byte[16]"
+        },
+        {
+          "name": "price",
+          "type": "uint64"
+        },
+        {
+          "name": "ipcsCid",
+          "type": "byte[64]"
+        }
+      ],
+      "returns": {
+        "type": "uint64"
+      }
+    },
+    {
+      "name": "buySkill",
+      "desc": "Purchase a skill. Splits payment between seller and platform.",
+      "args": [
+        {
+          "name": "payment",
+          "type": "pay"
+        },
+        {
+          "name": "skillId",
+          "type": "uint64"
+        }
+      ],
+      "returns": {
+        "type": "void"
+      }
+    },
+    {
+      "name": "hasAccess",
+      "desc": "Check if a buyer has purchased a skill. Used by x402 content gate.",
+      "args": [
+        {
+          "name": "skillId",
+          "type": "uint64"
+        },
+        {
+          "name": "buyer",
+          "type": "address"
+        }
+      ],
+      "returns": {
+        "type": "uint64"
+      }
+    },
+    {
+      "name": "delistSkill",
+      "desc": "Delist a skill. Only the seller can delist their own skill.",
+      "args": [
+        {
+          "name": "skillId",
+          "type": "uint64"
+        }
+      ],
+      "returns": {
+        "type": "void"
+      }
+    },
+    {
+      "name": "setPlatformFee",
+      "desc": "Update platform fee (admin only)",
+      "args": [
+        {
+          "name": "feeBps",
+          "type": "uint64"
+        }
+      ],
+      "returns": {
+        "type": "void"
+      }
+    }
+  ]
+}

@@ -1,0 +1,2227 @@
+[
+  {
+    "teal": 1,
+    "source": "contracts\\SkillMarketplace.algo.ts:24"
+  },
+  {
+    "teal": 2,
+    "source": "contracts\\SkillMarketplace.algo.ts:24"
+  },
+  {
+    "teal": 3,
+    "source": "contracts\\SkillMarketplace.algo.ts:24"
+  },
+  {
+    "teal": 15,
+    "source": "contracts\\SkillMarketplace.algo.ts:24"
+  },
+  {
+    "teal": 16,
+    "source": "contracts\\SkillMarketplace.algo.ts:24"
+  },
+  {
+    "teal": 17,
+    "source": "contracts\\SkillMarketplace.algo.ts:24"
+  },
+  {
+    "teal": 18,
+    "source": "contracts\\SkillMarketplace.algo.ts:24"
+  },
+  {
+    "teal": 19,
+    "source": "contracts\\SkillMarketplace.algo.ts:24"
+  },
+  {
+    "teal": 20,
+    "source": "contracts\\SkillMarketplace.algo.ts:24"
+  },
+  {
+    "teal": 21,
+    "source": "contracts\\SkillMarketplace.algo.ts:24"
+  },
+  {
+    "teal": 25,
+    "source": "contracts\\SkillMarketplace.algo.ts:24",
+    "errorMessage": "The requested action is not implemented in this contract. Are you using the correct OnComplete? Did you set your app ID?"
+  },
+  {
+    "teal": 30,
+    "source": "contracts\\SkillMarketplace.algo.ts:34"
+  },
+  {
+    "teal": 31,
+    "source": "contracts\\SkillMarketplace.algo.ts:34"
+  },
+  {
+    "teal": 32,
+    "source": "contracts\\SkillMarketplace.algo.ts:34"
+  },
+  {
+    "teal": 36,
+    "source": "contracts\\SkillMarketplace.algo.ts:34"
+  },
+  {
+    "teal": 40,
+    "source": "contracts\\SkillMarketplace.algo.ts:35"
+  },
+  {
+    "teal": 41,
+    "source": "contracts\\SkillMarketplace.algo.ts:35"
+  },
+  {
+    "teal": 42,
+    "source": "contracts\\SkillMarketplace.algo.ts:35"
+  },
+  {
+    "teal": 46,
+    "source": "contracts\\SkillMarketplace.algo.ts:36"
+  },
+  {
+    "teal": 47,
+    "source": "contracts\\SkillMarketplace.algo.ts:36"
+  },
+  {
+    "teal": 48,
+    "source": "contracts\\SkillMarketplace.algo.ts:36"
+  },
+  {
+    "teal": 52,
+    "source": "contracts\\SkillMarketplace.algo.ts:37"
+  },
+  {
+    "teal": 53,
+    "source": "contracts\\SkillMarketplace.algo.ts:37"
+  },
+  {
+    "teal": 54,
+    "source": "contracts\\SkillMarketplace.algo.ts:37"
+  },
+  {
+    "teal": 55,
+    "source": "contracts\\SkillMarketplace.algo.ts:34"
+  },
+  {
+    "teal": 60,
+    "source": "contracts\\SkillMarketplace.algo.ts:44"
+  },
+  {
+    "teal": 63,
+    "source": "contracts\\SkillMarketplace.algo.ts:51"
+  },
+  {
+    "teal": 64,
+    "source": "contracts\\SkillMarketplace.algo.ts:51"
+  },
+  {
+    "teal": 65,
+    "source": "contracts\\SkillMarketplace.algo.ts:51"
+  },
+  {
+    "teal": 66,
+    "source": "contracts\\SkillMarketplace.algo.ts:51"
+  },
+  {
+    "teal": 67,
+    "source": "contracts\\SkillMarketplace.algo.ts:51"
+  },
+  {
+    "teal": 70,
+    "source": "contracts\\SkillMarketplace.algo.ts:51",
+    "errorMessage": "argument 0 (ipcsCid) for listSkill must be a byte[64]"
+  },
+  {
+    "teal": 73,
+    "source": "contracts\\SkillMarketplace.algo.ts:50"
+  },
+  {
+    "teal": 74,
+    "source": "contracts\\SkillMarketplace.algo.ts:50"
+  },
+  {
+    "teal": 77,
+    "source": "contracts\\SkillMarketplace.algo.ts:49"
+  },
+  {
+    "teal": 78,
+    "source": "contracts\\SkillMarketplace.algo.ts:49"
+  },
+  {
+    "teal": 79,
+    "source": "contracts\\SkillMarketplace.algo.ts:49"
+  },
+  {
+    "teal": 80,
+    "source": "contracts\\SkillMarketplace.algo.ts:49"
+  },
+  {
+    "teal": 81,
+    "source": "contracts\\SkillMarketplace.algo.ts:49"
+  },
+  {
+    "teal": 84,
+    "source": "contracts\\SkillMarketplace.algo.ts:49",
+    "errorMessage": "argument 2 (version) for listSkill must be a byte[16]"
+  },
+  {
+    "teal": 87,
+    "source": "contracts\\SkillMarketplace.algo.ts:48"
+  },
+  {
+    "teal": 88,
+    "source": "contracts\\SkillMarketplace.algo.ts:48"
+  },
+  {
+    "teal": 89,
+    "source": "contracts\\SkillMarketplace.algo.ts:48"
+  },
+  {
+    "teal": 90,
+    "source": "contracts\\SkillMarketplace.algo.ts:48"
+  },
+  {
+    "teal": 91,
+    "source": "contracts\\SkillMarketplace.algo.ts:48"
+  },
+  {
+    "teal": 94,
+    "source": "contracts\\SkillMarketplace.algo.ts:48",
+    "errorMessage": "argument 3 (skillType) for listSkill must be a byte[16]"
+  },
+  {
+    "teal": 97,
+    "source": "contracts\\SkillMarketplace.algo.ts:47"
+  },
+  {
+    "teal": 98,
+    "source": "contracts\\SkillMarketplace.algo.ts:47"
+  },
+  {
+    "teal": 99,
+    "source": "contracts\\SkillMarketplace.algo.ts:47"
+  },
+  {
+    "teal": 100,
+    "source": "contracts\\SkillMarketplace.algo.ts:47"
+  },
+  {
+    "teal": 101,
+    "source": "contracts\\SkillMarketplace.algo.ts:47"
+  },
+  {
+    "teal": 104,
+    "source": "contracts\\SkillMarketplace.algo.ts:47",
+    "errorMessage": "argument 4 (description) for listSkill must be a byte[256]"
+  },
+  {
+    "teal": 107,
+    "source": "contracts\\SkillMarketplace.algo.ts:46"
+  },
+  {
+    "teal": 108,
+    "source": "contracts\\SkillMarketplace.algo.ts:46"
+  },
+  {
+    "teal": 109,
+    "source": "contracts\\SkillMarketplace.algo.ts:46"
+  },
+  {
+    "teal": 110,
+    "source": "contracts\\SkillMarketplace.algo.ts:46"
+  },
+  {
+    "teal": 111,
+    "source": "contracts\\SkillMarketplace.algo.ts:46"
+  },
+  {
+    "teal": 114,
+    "source": "contracts\\SkillMarketplace.algo.ts:46",
+    "errorMessage": "argument 5 (name) for listSkill must be a byte[64]"
+  },
+  {
+    "teal": 117,
+    "source": "contracts\\SkillMarketplace.algo.ts:45"
+  },
+  {
+    "teal": 118,
+    "source": "contracts\\SkillMarketplace.algo.ts:45"
+  },
+  {
+    "teal": 119,
+    "source": "contracts\\SkillMarketplace.algo.ts:45"
+  },
+  {
+    "teal": 120,
+    "source": "contracts\\SkillMarketplace.algo.ts:45"
+  },
+  {
+    "teal": 121,
+    "source": "contracts\\SkillMarketplace.algo.ts:45"
+  },
+  {
+    "teal": 122,
+    "source": "contracts\\SkillMarketplace.algo.ts:45"
+  },
+  {
+    "teal": 123,
+    "source": "contracts\\SkillMarketplace.algo.ts:45"
+  },
+  {
+    "teal": 126,
+    "source": "contracts\\SkillMarketplace.algo.ts:45",
+    "errorMessage": "argument 6 (mbrPayment) for listSkill must be a pay transaction"
+  },
+  {
+    "teal": 129,
+    "source": "contracts\\SkillMarketplace.algo.ts:44"
+  },
+  {
+    "teal": 130,
+    "source": "contracts\\SkillMarketplace.algo.ts:44"
+  },
+  {
+    "teal": 131,
+    "source": "contracts\\SkillMarketplace.algo.ts:44"
+  },
+  {
+    "teal": 132,
+    "source": "contracts\\SkillMarketplace.algo.ts:44"
+  },
+  {
+    "teal": 133,
+    "source": "contracts\\SkillMarketplace.algo.ts:44"
+  },
+  {
+    "teal": 134,
+    "source": "contracts\\SkillMarketplace.algo.ts:44"
+  },
+  {
+    "teal": 141,
+    "source": "contracts\\SkillMarketplace.algo.ts:44"
+  },
+  {
+    "teal": 144,
+    "source": "contracts\\SkillMarketplace.algo.ts:44"
+  },
+  {
+    "teal": 145,
+    "source": "contracts\\SkillMarketplace.algo.ts:44"
+  },
+  {
+    "teal": 149,
+    "source": "contracts\\SkillMarketplace.algo.ts:55"
+  },
+  {
+    "teal": 150,
+    "source": "contracts\\SkillMarketplace.algo.ts:55"
+  },
+  {
+    "teal": 158,
+    "source": "contracts\\SkillMarketplace.algo.ts:56"
+  },
+  {
+    "teal": 159,
+    "source": "contracts\\SkillMarketplace.algo.ts:57"
+  },
+  {
+    "teal": 160,
+    "source": "contracts\\SkillMarketplace.algo.ts:57"
+  },
+  {
+    "teal": 161,
+    "source": "contracts\\SkillMarketplace.algo.ts:57"
+  },
+  {
+    "teal": 164,
+    "source": "contracts\\SkillMarketplace.algo.ts:57",
+    "errorMessage": "transaction verification failed: {\"txn\":\"mbrPayment\",\"field\":\"receiver\",\"expected\":\"this.app.address\"}"
+  },
+  {
+    "teal": 167,
+    "source": "contracts\\SkillMarketplace.algo.ts:56"
+  },
+  {
+    "teal": 168,
+    "source": "contracts\\SkillMarketplace.algo.ts:58"
+  },
+  {
+    "teal": 169,
+    "source": "contracts\\SkillMarketplace.algo.ts:58"
+  },
+  {
+    "teal": 170,
+    "source": "contracts\\SkillMarketplace.algo.ts:58"
+  },
+  {
+    "teal": 173,
+    "source": "contracts\\SkillMarketplace.algo.ts:58",
+    "errorMessage": "transaction verification failed: {\"txn\":\"mbrPayment\",\"field\":\"amount\",\"condition\":\"greaterThanEqualTo\",\"expected\":\">=minMbr\"}"
+  },
+  {
+    "teal": 177,
+    "source": "contracts\\SkillMarketplace.algo.ts:61"
+  },
+  {
+    "teal": 178,
+    "source": "contracts\\SkillMarketplace.algo.ts:61"
+  },
+  {
+    "teal": 179,
+    "source": "contracts\\SkillMarketplace.algo.ts:61"
+  },
+  {
+    "teal": 182,
+    "source": "contracts\\SkillMarketplace.algo.ts:61",
+    "errorMessage": "Price must be greater than 0"
+  },
+  {
+    "teal": 186,
+    "source": "contracts\\SkillMarketplace.algo.ts:65"
+  },
+  {
+    "teal": 187,
+    "source": "contracts\\SkillMarketplace.algo.ts:65"
+  },
+  {
+    "teal": 188,
+    "source": "contracts\\SkillMarketplace.algo.ts:65"
+  },
+  {
+    "teal": 189,
+    "source": "contracts\\SkillMarketplace.algo.ts:65"
+  },
+  {
+    "teal": 190,
+    "source": "contracts\\SkillMarketplace.algo.ts:65"
+  },
+  {
+    "teal": 194,
+    "source": "contracts\\SkillMarketplace.algo.ts:66"
+  },
+  {
+    "teal": 195,
+    "source": "contracts\\SkillMarketplace.algo.ts:66"
+  },
+  {
+    "teal": 196,
+    "source": "contracts\\SkillMarketplace.algo.ts:66"
+  },
+  {
+    "teal": 211,
+    "source": "contracts\\SkillMarketplace.algo.ts:70"
+  },
+  {
+    "teal": 212,
+    "source": "contracts\\SkillMarketplace.algo.ts:71"
+  },
+  {
+    "teal": 213,
+    "source": "contracts\\SkillMarketplace.algo.ts:71"
+  },
+  {
+    "teal": 214,
+    "source": "contracts\\SkillMarketplace.algo.ts:72"
+  },
+  {
+    "teal": 215,
+    "source": "contracts\\SkillMarketplace.algo.ts:72"
+  },
+  {
+    "teal": 216,
+    "source": "contracts\\SkillMarketplace.algo.ts:73"
+  },
+  {
+    "teal": 217,
+    "source": "contracts\\SkillMarketplace.algo.ts:73"
+  },
+  {
+    "teal": 218,
+    "source": "contracts\\SkillMarketplace.algo.ts:74"
+  },
+  {
+    "teal": 219,
+    "source": "contracts\\SkillMarketplace.algo.ts:74"
+  },
+  {
+    "teal": 220,
+    "source": "contracts\\SkillMarketplace.algo.ts:74"
+  },
+  {
+    "teal": 221,
+    "source": "contracts\\SkillMarketplace.algo.ts:75"
+  },
+  {
+    "teal": 222,
+    "source": "contracts\\SkillMarketplace.algo.ts:75"
+  },
+  {
+    "teal": 223,
+    "source": "contracts\\SkillMarketplace.algo.ts:76"
+  },
+  {
+    "teal": 224,
+    "source": "contracts\\SkillMarketplace.algo.ts:76"
+  },
+  {
+    "teal": 225,
+    "source": "contracts\\SkillMarketplace.algo.ts:77"
+  },
+  {
+    "teal": 226,
+    "source": "contracts\\SkillMarketplace.algo.ts:77"
+  },
+  {
+    "teal": 227,
+    "source": "contracts\\SkillMarketplace.algo.ts:78"
+  },
+  {
+    "teal": 228,
+    "source": "contracts\\SkillMarketplace.algo.ts:78"
+  },
+  {
+    "teal": 229,
+    "source": "contracts\\SkillMarketplace.algo.ts:78"
+  },
+  {
+    "teal": 230,
+    "source": "contracts\\SkillMarketplace.algo.ts:79"
+  },
+  {
+    "teal": 231,
+    "source": "contracts\\SkillMarketplace.algo.ts:79"
+  },
+  {
+    "teal": 232,
+    "source": "contracts\\SkillMarketplace.algo.ts:69"
+  },
+  {
+    "teal": 236,
+    "source": "contracts\\SkillMarketplace.algo.ts:82"
+  },
+  {
+    "teal": 237,
+    "source": "contracts\\SkillMarketplace.algo.ts:82"
+  },
+  {
+    "teal": 238,
+    "source": "contracts\\SkillMarketplace.algo.ts:82"
+  },
+  {
+    "teal": 239,
+    "source": "contracts\\SkillMarketplace.algo.ts:82"
+  },
+  {
+    "teal": 240,
+    "source": "contracts\\SkillMarketplace.algo.ts:82"
+  },
+  {
+    "teal": 241,
+    "source": "contracts\\SkillMarketplace.algo.ts:82"
+  },
+  {
+    "teal": 244,
+    "source": "contracts\\SkillMarketplace.algo.ts:82",
+    "errorMessage": "Skill already exists with this ID"
+  },
+  {
+    "teal": 248,
+    "source": "contracts\\SkillMarketplace.algo.ts:84"
+  },
+  {
+    "teal": 249,
+    "source": "contracts\\SkillMarketplace.algo.ts:84"
+  },
+  {
+    "teal": 250,
+    "source": "contracts\\SkillMarketplace.algo.ts:84"
+  },
+  {
+    "teal": 251,
+    "source": "contracts\\SkillMarketplace.algo.ts:84"
+  },
+  {
+    "teal": 255,
+    "source": "contracts\\SkillMarketplace.algo.ts:86"
+  },
+  {
+    "teal": 258,
+    "source": "contracts\\SkillMarketplace.algo.ts:44"
+  },
+  {
+    "teal": 261,
+    "source": "contracts\\SkillMarketplace.algo.ts:44"
+  },
+  {
+    "teal": 262,
+    "source": "contracts\\SkillMarketplace.algo.ts:44"
+  },
+  {
+    "teal": 267,
+    "source": "contracts\\SkillMarketplace.algo.ts:94"
+  },
+  {
+    "teal": 268,
+    "source": "contracts\\SkillMarketplace.algo.ts:94"
+  },
+  {
+    "teal": 271,
+    "source": "contracts\\SkillMarketplace.algo.ts:93"
+  },
+  {
+    "teal": 272,
+    "source": "contracts\\SkillMarketplace.algo.ts:93"
+  },
+  {
+    "teal": 273,
+    "source": "contracts\\SkillMarketplace.algo.ts:93"
+  },
+  {
+    "teal": 274,
+    "source": "contracts\\SkillMarketplace.algo.ts:93"
+  },
+  {
+    "teal": 275,
+    "source": "contracts\\SkillMarketplace.algo.ts:93"
+  },
+  {
+    "teal": 276,
+    "source": "contracts\\SkillMarketplace.algo.ts:93"
+  },
+  {
+    "teal": 277,
+    "source": "contracts\\SkillMarketplace.algo.ts:93"
+  },
+  {
+    "teal": 280,
+    "source": "contracts\\SkillMarketplace.algo.ts:93",
+    "errorMessage": "argument 1 (payment) for buySkill must be a pay transaction"
+  },
+  {
+    "teal": 283,
+    "source": "contracts\\SkillMarketplace.algo.ts:92"
+  },
+  {
+    "teal": 284,
+    "source": "contracts\\SkillMarketplace.algo.ts:92"
+  },
+  {
+    "teal": 285,
+    "source": "contracts\\SkillMarketplace.algo.ts:92"
+  },
+  {
+    "teal": 291,
+    "source": "contracts\\SkillMarketplace.algo.ts:92"
+  },
+  {
+    "teal": 294,
+    "source": "contracts\\SkillMarketplace.algo.ts:92"
+  },
+  {
+    "teal": 295,
+    "source": "contracts\\SkillMarketplace.algo.ts:92"
+  },
+  {
+    "teal": 299,
+    "source": "contracts\\SkillMarketplace.algo.ts:96"
+  },
+  {
+    "teal": 300,
+    "source": "contracts\\SkillMarketplace.algo.ts:96"
+  },
+  {
+    "teal": 301,
+    "source": "contracts\\SkillMarketplace.algo.ts:96"
+  },
+  {
+    "teal": 302,
+    "source": "contracts\\SkillMarketplace.algo.ts:96"
+  },
+  {
+    "teal": 303,
+    "source": "contracts\\SkillMarketplace.algo.ts:96"
+  },
+  {
+    "teal": 306,
+    "source": "contracts\\SkillMarketplace.algo.ts:96",
+    "errorMessage": "Skill not found"
+  },
+  {
+    "teal": 310,
+    "source": "contracts\\SkillMarketplace.algo.ts:97"
+  },
+  {
+    "teal": 311,
+    "source": "contracts\\SkillMarketplace.algo.ts:97"
+  },
+  {
+    "teal": 312,
+    "source": "contracts\\SkillMarketplace.algo.ts:97"
+  },
+  {
+    "teal": 316,
+    "source": "contracts\\SkillMarketplace.algo.ts:98"
+  },
+  {
+    "teal": 317,
+    "source": "contracts\\SkillMarketplace.algo.ts:98"
+  },
+  {
+    "teal": 318,
+    "source": "contracts\\SkillMarketplace.algo.ts:97"
+  },
+  {
+    "teal": 319,
+    "source": "contracts\\SkillMarketplace.algo.ts:97"
+  },
+  {
+    "teal": 320,
+    "source": "contracts\\SkillMarketplace.algo.ts:97"
+  },
+  {
+    "teal": 321,
+    "source": "contracts\\SkillMarketplace.algo.ts:97"
+  },
+  {
+    "teal": 322,
+    "source": "contracts\\SkillMarketplace.algo.ts:98"
+  },
+  {
+    "teal": 323,
+    "source": "contracts\\SkillMarketplace.algo.ts:98"
+  },
+  {
+    "teal": 324,
+    "source": "contracts\\SkillMarketplace.algo.ts:98"
+  },
+  {
+    "teal": 327,
+    "source": "contracts\\SkillMarketplace.algo.ts:98",
+    "errorMessage": "Skill is no longer active"
+  },
+  {
+    "teal": 331,
+    "source": "contracts\\SkillMarketplace.algo.ts:99"
+  },
+  {
+    "teal": 332,
+    "source": "contracts\\SkillMarketplace.algo.ts:99"
+  },
+  {
+    "teal": 333,
+    "source": "contracts\\SkillMarketplace.algo.ts:99"
+  },
+  {
+    "teal": 334,
+    "source": "contracts\\SkillMarketplace.algo.ts:97"
+  },
+  {
+    "teal": 335,
+    "source": "contracts\\SkillMarketplace.algo.ts:97"
+  },
+  {
+    "teal": 336,
+    "source": "contracts\\SkillMarketplace.algo.ts:97"
+  },
+  {
+    "teal": 337,
+    "source": "contracts\\SkillMarketplace.algo.ts:97"
+  },
+  {
+    "teal": 338,
+    "source": "contracts\\SkillMarketplace.algo.ts:99"
+  },
+  {
+    "teal": 341,
+    "source": "contracts\\SkillMarketplace.algo.ts:99",
+    "errorMessage": "Cannot buy your own skill"
+  },
+  {
+    "teal": 349,
+    "source": "contracts\\SkillMarketplace.algo.ts:101"
+  },
+  {
+    "teal": 350,
+    "source": "contracts\\SkillMarketplace.algo.ts:102"
+  },
+  {
+    "teal": 351,
+    "source": "contracts\\SkillMarketplace.algo.ts:102"
+  },
+  {
+    "teal": 352,
+    "source": "contracts\\SkillMarketplace.algo.ts:102"
+  },
+  {
+    "teal": 355,
+    "source": "contracts\\SkillMarketplace.algo.ts:102",
+    "errorMessage": "transaction verification failed: {\"txn\":\"payment\",\"field\":\"receiver\",\"expected\":\"this.app.address\"}"
+  },
+  {
+    "teal": 358,
+    "source": "contracts\\SkillMarketplace.algo.ts:101"
+  },
+  {
+    "teal": 359,
+    "source": "contracts\\SkillMarketplace.algo.ts:103"
+  },
+  {
+    "teal": 360,
+    "source": "contracts\\SkillMarketplace.algo.ts:103"
+  },
+  {
+    "teal": 361,
+    "source": "contracts\\SkillMarketplace.algo.ts:103"
+  },
+  {
+    "teal": 362,
+    "source": "contracts\\SkillMarketplace.algo.ts:97"
+  },
+  {
+    "teal": 363,
+    "source": "contracts\\SkillMarketplace.algo.ts:97"
+  },
+  {
+    "teal": 364,
+    "source": "contracts\\SkillMarketplace.algo.ts:97"
+  },
+  {
+    "teal": 365,
+    "source": "contracts\\SkillMarketplace.algo.ts:97"
+  },
+  {
+    "teal": 366,
+    "source": "contracts\\SkillMarketplace.algo.ts:103"
+  },
+  {
+    "teal": 367,
+    "source": "contracts\\SkillMarketplace.algo.ts:103"
+  },
+  {
+    "teal": 370,
+    "source": "contracts\\SkillMarketplace.algo.ts:103",
+    "errorMessage": "transaction verification failed: {\"txn\":\"payment\",\"field\":\"amount\",\"condition\":\"greaterThanEqualTo\",\"expected\":\">=skill.price\"}"
+  },
+  {
+    "teal": 374,
+    "source": "contracts\\SkillMarketplace.algo.ts:107"
+  },
+  {
+    "teal": 375,
+    "source": "contracts\\SkillMarketplace.algo.ts:107"
+  },
+  {
+    "teal": 376,
+    "source": "contracts\\SkillMarketplace.algo.ts:107"
+  },
+  {
+    "teal": 377,
+    "source": "contracts\\SkillMarketplace.algo.ts:107"
+  },
+  {
+    "teal": 378,
+    "source": "contracts\\SkillMarketplace.algo.ts:107"
+  },
+  {
+    "teal": 379,
+    "source": "contracts\\SkillMarketplace.algo.ts:107"
+  },
+  {
+    "teal": 380,
+    "source": "contracts\\SkillMarketplace.algo.ts:107"
+  },
+  {
+    "teal": 384,
+    "source": "contracts\\SkillMarketplace.algo.ts:108"
+  },
+  {
+    "teal": 385,
+    "source": "contracts\\SkillMarketplace.algo.ts:108"
+  },
+  {
+    "teal": 386,
+    "source": "contracts\\SkillMarketplace.algo.ts:108"
+  },
+  {
+    "teal": 387,
+    "source": "contracts\\SkillMarketplace.algo.ts:108"
+  },
+  {
+    "teal": 388,
+    "source": "contracts\\SkillMarketplace.algo.ts:108"
+  },
+  {
+    "teal": 389,
+    "source": "contracts\\SkillMarketplace.algo.ts:108"
+  },
+  {
+    "teal": 390,
+    "source": "contracts\\SkillMarketplace.algo.ts:108"
+  },
+  {
+    "teal": 391,
+    "source": "contracts\\SkillMarketplace.algo.ts:108"
+  },
+  {
+    "teal": 392,
+    "source": "contracts\\SkillMarketplace.algo.ts:108"
+  },
+  {
+    "teal": 393,
+    "source": "contracts\\SkillMarketplace.algo.ts:108"
+  },
+  {
+    "teal": 394,
+    "source": "contracts\\SkillMarketplace.algo.ts:108"
+  },
+  {
+    "teal": 397,
+    "source": "contracts\\SkillMarketplace.algo.ts:108",
+    "errorMessage": "Already purchased this skill"
+  },
+  {
+    "teal": 401,
+    "source": "contracts\\SkillMarketplace.algo.ts:111"
+  },
+  {
+    "teal": 402,
+    "source": "contracts\\SkillMarketplace.algo.ts:111"
+  },
+  {
+    "teal": 403,
+    "source": "contracts\\SkillMarketplace.algo.ts:97"
+  },
+  {
+    "teal": 404,
+    "source": "contracts\\SkillMarketplace.algo.ts:97"
+  },
+  {
+    "teal": 405,
+    "source": "contracts\\SkillMarketplace.algo.ts:97"
+  },
+  {
+    "teal": 406,
+    "source": "contracts\\SkillMarketplace.algo.ts:97"
+  },
+  {
+    "teal": 407,
+    "source": "contracts\\SkillMarketplace.algo.ts:111"
+  },
+  {
+    "teal": 408,
+    "source": "contracts\\SkillMarketplace.algo.ts:111"
+  },
+  {
+    "teal": 409,
+    "source": "contracts\\SkillMarketplace.algo.ts:111"
+  },
+  {
+    "teal": 410,
+    "source": "contracts\\SkillMarketplace.algo.ts:111"
+  },
+  {
+    "teal": 411,
+    "source": "contracts\\SkillMarketplace.algo.ts:111"
+  },
+  {
+    "teal": 412,
+    "source": "contracts\\SkillMarketplace.algo.ts:111"
+  },
+  {
+    "teal": 413,
+    "source": "contracts\\SkillMarketplace.algo.ts:111"
+  },
+  {
+    "teal": 417,
+    "source": "contracts\\SkillMarketplace.algo.ts:112"
+  },
+  {
+    "teal": 418,
+    "source": "contracts\\SkillMarketplace.algo.ts:112"
+  },
+  {
+    "teal": 419,
+    "source": "contracts\\SkillMarketplace.algo.ts:97"
+  },
+  {
+    "teal": 420,
+    "source": "contracts\\SkillMarketplace.algo.ts:97"
+  },
+  {
+    "teal": 421,
+    "source": "contracts\\SkillMarketplace.algo.ts:97"
+  },
+  {
+    "teal": 422,
+    "source": "contracts\\SkillMarketplace.algo.ts:97"
+  },
+  {
+    "teal": 423,
+    "source": "contracts\\SkillMarketplace.algo.ts:112"
+  },
+  {
+    "teal": 424,
+    "source": "contracts\\SkillMarketplace.algo.ts:112"
+  },
+  {
+    "teal": 425,
+    "source": "contracts\\SkillMarketplace.algo.ts:112"
+  },
+  {
+    "teal": 426,
+    "source": "contracts\\SkillMarketplace.algo.ts:112"
+  },
+  {
+    "teal": 433,
+    "source": "contracts\\SkillMarketplace.algo.ts:115"
+  },
+  {
+    "teal": 434,
+    "source": "contracts\\SkillMarketplace.algo.ts:115"
+  },
+  {
+    "teal": 435,
+    "source": "contracts\\SkillMarketplace.algo.ts:115"
+  },
+  {
+    "teal": 439,
+    "source": "contracts\\SkillMarketplace.algo.ts:116"
+  },
+  {
+    "teal": 440,
+    "source": "contracts\\SkillMarketplace.algo.ts:116"
+  },
+  {
+    "teal": 441,
+    "source": "contracts\\SkillMarketplace.algo.ts:97"
+  },
+  {
+    "teal": 442,
+    "source": "contracts\\SkillMarketplace.algo.ts:97"
+  },
+  {
+    "teal": 443,
+    "source": "contracts\\SkillMarketplace.algo.ts:97"
+  },
+  {
+    "teal": 444,
+    "source": "contracts\\SkillMarketplace.algo.ts:97"
+  },
+  {
+    "teal": 445,
+    "source": "contracts\\SkillMarketplace.algo.ts:116"
+  },
+  {
+    "teal": 449,
+    "source": "contracts\\SkillMarketplace.algo.ts:117"
+  },
+  {
+    "teal": 450,
+    "source": "contracts\\SkillMarketplace.algo.ts:117"
+  },
+  {
+    "teal": 453,
+    "source": "contracts\\SkillMarketplace.algo.ts:115"
+  },
+  {
+    "teal": 454,
+    "source": "contracts\\SkillMarketplace.algo.ts:115"
+  },
+  {
+    "teal": 457,
+    "source": "contracts\\SkillMarketplace.algo.ts:115"
+  },
+  {
+    "teal": 462,
+    "source": "contracts\\SkillMarketplace.algo.ts:121"
+  },
+  {
+    "teal": 463,
+    "source": "contracts\\SkillMarketplace.algo.ts:121"
+  },
+  {
+    "teal": 464,
+    "source": "contracts\\SkillMarketplace.algo.ts:121"
+  },
+  {
+    "teal": 465,
+    "source": "contracts\\SkillMarketplace.algo.ts:121"
+  },
+  {
+    "teal": 473,
+    "source": "contracts\\SkillMarketplace.algo.ts:122"
+  },
+  {
+    "teal": 474,
+    "source": "contracts\\SkillMarketplace.algo.ts:122"
+  },
+  {
+    "teal": 475,
+    "source": "contracts\\SkillMarketplace.algo.ts:122"
+  },
+  {
+    "teal": 479,
+    "source": "contracts\\SkillMarketplace.algo.ts:123"
+  },
+  {
+    "teal": 480,
+    "source": "contracts\\SkillMarketplace.algo.ts:123"
+  },
+  {
+    "teal": 481,
+    "source": "contracts\\SkillMarketplace.algo.ts:123"
+  },
+  {
+    "teal": 485,
+    "source": "contracts\\SkillMarketplace.algo.ts:124"
+  },
+  {
+    "teal": 486,
+    "source": "contracts\\SkillMarketplace.algo.ts:124"
+  },
+  {
+    "teal": 489,
+    "source": "contracts\\SkillMarketplace.algo.ts:122"
+  },
+  {
+    "teal": 490,
+    "source": "contracts\\SkillMarketplace.algo.ts:122"
+  },
+  {
+    "teal": 493,
+    "source": "contracts\\SkillMarketplace.algo.ts:122"
+  },
+  {
+    "teal": 502,
+    "source": "contracts\\SkillMarketplace.algo.ts:130"
+  },
+  {
+    "teal": 503,
+    "source": "contracts\\SkillMarketplace.algo.ts:131"
+  },
+  {
+    "teal": 504,
+    "source": "contracts\\SkillMarketplace.algo.ts:131"
+  },
+  {
+    "teal": 505,
+    "source": "contracts\\SkillMarketplace.algo.ts:131"
+  },
+  {
+    "teal": 506,
+    "source": "contracts\\SkillMarketplace.algo.ts:132"
+  },
+  {
+    "teal": 507,
+    "source": "contracts\\SkillMarketplace.algo.ts:132"
+  },
+  {
+    "teal": 508,
+    "source": "contracts\\SkillMarketplace.algo.ts:132"
+  },
+  {
+    "teal": 509,
+    "source": "contracts\\SkillMarketplace.algo.ts:129"
+  },
+  {
+    "teal": 513,
+    "source": "contracts\\SkillMarketplace.algo.ts:134"
+  },
+  {
+    "teal": 514,
+    "source": "contracts\\SkillMarketplace.algo.ts:134"
+  },
+  {
+    "teal": 515,
+    "source": "contracts\\SkillMarketplace.algo.ts:134"
+  },
+  {
+    "teal": 516,
+    "source": "contracts\\SkillMarketplace.algo.ts:134"
+  },
+  {
+    "teal": 517,
+    "source": "contracts\\SkillMarketplace.algo.ts:134"
+  },
+  {
+    "teal": 518,
+    "source": "contracts\\SkillMarketplace.algo.ts:134"
+  },
+  {
+    "teal": 519,
+    "source": "contracts\\SkillMarketplace.algo.ts:134"
+  },
+  {
+    "teal": 520,
+    "source": "contracts\\SkillMarketplace.algo.ts:134"
+  },
+  {
+    "teal": 521,
+    "source": "contracts\\SkillMarketplace.algo.ts:134"
+  },
+  {
+    "teal": 536,
+    "source": "contracts\\SkillMarketplace.algo.ts:138"
+  },
+  {
+    "teal": 537,
+    "source": "contracts\\SkillMarketplace.algo.ts:138"
+  },
+  {
+    "teal": 538,
+    "source": "contracts\\SkillMarketplace.algo.ts:97"
+  },
+  {
+    "teal": 539,
+    "source": "contracts\\SkillMarketplace.algo.ts:97"
+  },
+  {
+    "teal": 540,
+    "source": "contracts\\SkillMarketplace.algo.ts:97"
+  },
+  {
+    "teal": 541,
+    "source": "contracts\\SkillMarketplace.algo.ts:97"
+  },
+  {
+    "teal": 542,
+    "source": "contracts\\SkillMarketplace.algo.ts:139"
+  },
+  {
+    "teal": 543,
+    "source": "contracts\\SkillMarketplace.algo.ts:139"
+  },
+  {
+    "teal": 544,
+    "source": "contracts\\SkillMarketplace.algo.ts:97"
+  },
+  {
+    "teal": 545,
+    "source": "contracts\\SkillMarketplace.algo.ts:97"
+  },
+  {
+    "teal": 546,
+    "source": "contracts\\SkillMarketplace.algo.ts:97"
+  },
+  {
+    "teal": 547,
+    "source": "contracts\\SkillMarketplace.algo.ts:97"
+  },
+  {
+    "teal": 548,
+    "source": "contracts\\SkillMarketplace.algo.ts:139"
+  },
+  {
+    "teal": 549,
+    "source": "contracts\\SkillMarketplace.algo.ts:140"
+  },
+  {
+    "teal": 550,
+    "source": "contracts\\SkillMarketplace.algo.ts:140"
+  },
+  {
+    "teal": 551,
+    "source": "contracts\\SkillMarketplace.algo.ts:97"
+  },
+  {
+    "teal": 552,
+    "source": "contracts\\SkillMarketplace.algo.ts:97"
+  },
+  {
+    "teal": 553,
+    "source": "contracts\\SkillMarketplace.algo.ts:97"
+  },
+  {
+    "teal": 554,
+    "source": "contracts\\SkillMarketplace.algo.ts:97"
+  },
+  {
+    "teal": 555,
+    "source": "contracts\\SkillMarketplace.algo.ts:140"
+  },
+  {
+    "teal": 556,
+    "source": "contracts\\SkillMarketplace.algo.ts:141"
+  },
+  {
+    "teal": 557,
+    "source": "contracts\\SkillMarketplace.algo.ts:141"
+  },
+  {
+    "teal": 558,
+    "source": "contracts\\SkillMarketplace.algo.ts:97"
+  },
+  {
+    "teal": 559,
+    "source": "contracts\\SkillMarketplace.algo.ts:97"
+  },
+  {
+    "teal": 560,
+    "source": "contracts\\SkillMarketplace.algo.ts:97"
+  },
+  {
+    "teal": 561,
+    "source": "contracts\\SkillMarketplace.algo.ts:97"
+  },
+  {
+    "teal": 562,
+    "source": "contracts\\SkillMarketplace.algo.ts:141"
+  },
+  {
+    "teal": 563,
+    "source": "contracts\\SkillMarketplace.algo.ts:142"
+  },
+  {
+    "teal": 564,
+    "source": "contracts\\SkillMarketplace.algo.ts:142"
+  },
+  {
+    "teal": 565,
+    "source": "contracts\\SkillMarketplace.algo.ts:97"
+  },
+  {
+    "teal": 566,
+    "source": "contracts\\SkillMarketplace.algo.ts:97"
+  },
+  {
+    "teal": 567,
+    "source": "contracts\\SkillMarketplace.algo.ts:97"
+  },
+  {
+    "teal": 568,
+    "source": "contracts\\SkillMarketplace.algo.ts:97"
+  },
+  {
+    "teal": 569,
+    "source": "contracts\\SkillMarketplace.algo.ts:142"
+  },
+  {
+    "teal": 570,
+    "source": "contracts\\SkillMarketplace.algo.ts:142"
+  },
+  {
+    "teal": 571,
+    "source": "contracts\\SkillMarketplace.algo.ts:142"
+  },
+  {
+    "teal": 572,
+    "source": "contracts\\SkillMarketplace.algo.ts:143"
+  },
+  {
+    "teal": 573,
+    "source": "contracts\\SkillMarketplace.algo.ts:143"
+  },
+  {
+    "teal": 574,
+    "source": "contracts\\SkillMarketplace.algo.ts:97"
+  },
+  {
+    "teal": 575,
+    "source": "contracts\\SkillMarketplace.algo.ts:97"
+  },
+  {
+    "teal": 576,
+    "source": "contracts\\SkillMarketplace.algo.ts:97"
+  },
+  {
+    "teal": 577,
+    "source": "contracts\\SkillMarketplace.algo.ts:97"
+  },
+  {
+    "teal": 578,
+    "source": "contracts\\SkillMarketplace.algo.ts:143"
+  },
+  {
+    "teal": 579,
+    "source": "contracts\\SkillMarketplace.algo.ts:144"
+  },
+  {
+    "teal": 580,
+    "source": "contracts\\SkillMarketplace.algo.ts:144"
+  },
+  {
+    "teal": 581,
+    "source": "contracts\\SkillMarketplace.algo.ts:97"
+  },
+  {
+    "teal": 582,
+    "source": "contracts\\SkillMarketplace.algo.ts:97"
+  },
+  {
+    "teal": 583,
+    "source": "contracts\\SkillMarketplace.algo.ts:97"
+  },
+  {
+    "teal": 584,
+    "source": "contracts\\SkillMarketplace.algo.ts:97"
+  },
+  {
+    "teal": 585,
+    "source": "contracts\\SkillMarketplace.algo.ts:144"
+  },
+  {
+    "teal": 586,
+    "source": "contracts\\SkillMarketplace.algo.ts:145"
+  },
+  {
+    "teal": 587,
+    "source": "contracts\\SkillMarketplace.algo.ts:145"
+  },
+  {
+    "teal": 588,
+    "source": "contracts\\SkillMarketplace.algo.ts:97"
+  },
+  {
+    "teal": 589,
+    "source": "contracts\\SkillMarketplace.algo.ts:97"
+  },
+  {
+    "teal": 590,
+    "source": "contracts\\SkillMarketplace.algo.ts:97"
+  },
+  {
+    "teal": 591,
+    "source": "contracts\\SkillMarketplace.algo.ts:97"
+  },
+  {
+    "teal": 592,
+    "source": "contracts\\SkillMarketplace.algo.ts:145"
+  },
+  {
+    "teal": 593,
+    "source": "contracts\\SkillMarketplace.algo.ts:145"
+  },
+  {
+    "teal": 594,
+    "source": "contracts\\SkillMarketplace.algo.ts:145"
+  },
+  {
+    "teal": 595,
+    "source": "contracts\\SkillMarketplace.algo.ts:145"
+  },
+  {
+    "teal": 596,
+    "source": "contracts\\SkillMarketplace.algo.ts:145"
+  },
+  {
+    "teal": 597,
+    "source": "contracts\\SkillMarketplace.algo.ts:146"
+  },
+  {
+    "teal": 598,
+    "source": "contracts\\SkillMarketplace.algo.ts:146"
+  },
+  {
+    "teal": 599,
+    "source": "contracts\\SkillMarketplace.algo.ts:97"
+  },
+  {
+    "teal": 600,
+    "source": "contracts\\SkillMarketplace.algo.ts:97"
+  },
+  {
+    "teal": 601,
+    "source": "contracts\\SkillMarketplace.algo.ts:97"
+  },
+  {
+    "teal": 602,
+    "source": "contracts\\SkillMarketplace.algo.ts:97"
+  },
+  {
+    "teal": 603,
+    "source": "contracts\\SkillMarketplace.algo.ts:146"
+  },
+  {
+    "teal": 604,
+    "source": "contracts\\SkillMarketplace.algo.ts:146"
+  },
+  {
+    "teal": 605,
+    "source": "contracts\\SkillMarketplace.algo.ts:146"
+  },
+  {
+    "teal": 606,
+    "source": "contracts\\SkillMarketplace.algo.ts:147"
+  },
+  {
+    "teal": 607,
+    "source": "contracts\\SkillMarketplace.algo.ts:147"
+  },
+  {
+    "teal": 608,
+    "source": "contracts\\SkillMarketplace.algo.ts:97"
+  },
+  {
+    "teal": 609,
+    "source": "contracts\\SkillMarketplace.algo.ts:97"
+  },
+  {
+    "teal": 610,
+    "source": "contracts\\SkillMarketplace.algo.ts:97"
+  },
+  {
+    "teal": 611,
+    "source": "contracts\\SkillMarketplace.algo.ts:97"
+  },
+  {
+    "teal": 612,
+    "source": "contracts\\SkillMarketplace.algo.ts:147"
+  },
+  {
+    "teal": 613,
+    "source": "contracts\\SkillMarketplace.algo.ts:147"
+  },
+  {
+    "teal": 614,
+    "source": "contracts\\SkillMarketplace.algo.ts:147"
+  },
+  {
+    "teal": 615,
+    "source": "contracts\\SkillMarketplace.algo.ts:137"
+  },
+  {
+    "teal": 619,
+    "source": "contracts\\SkillMarketplace.algo.ts:149"
+  },
+  {
+    "teal": 620,
+    "source": "contracts\\SkillMarketplace.algo.ts:149"
+  },
+  {
+    "teal": 621,
+    "source": "contracts\\SkillMarketplace.algo.ts:149"
+  },
+  {
+    "teal": 622,
+    "source": "contracts\\SkillMarketplace.algo.ts:149"
+  },
+  {
+    "teal": 623,
+    "source": "contracts\\SkillMarketplace.algo.ts:92"
+  },
+  {
+    "teal": 628,
+    "source": "contracts\\SkillMarketplace.algo.ts:155"
+  },
+  {
+    "teal": 631,
+    "source": "contracts\\SkillMarketplace.algo.ts:155"
+  },
+  {
+    "teal": 632,
+    "source": "contracts\\SkillMarketplace.algo.ts:155"
+  },
+  {
+    "teal": 633,
+    "source": "contracts\\SkillMarketplace.algo.ts:155"
+  },
+  {
+    "teal": 634,
+    "source": "contracts\\SkillMarketplace.algo.ts:155"
+  },
+  {
+    "teal": 635,
+    "source": "contracts\\SkillMarketplace.algo.ts:155"
+  },
+  {
+    "teal": 638,
+    "source": "contracts\\SkillMarketplace.algo.ts:155",
+    "errorMessage": "argument 0 (buyer) for hasAccess must be a address"
+  },
+  {
+    "teal": 641,
+    "source": "contracts\\SkillMarketplace.algo.ts:155"
+  },
+  {
+    "teal": 642,
+    "source": "contracts\\SkillMarketplace.algo.ts:155"
+  },
+  {
+    "teal": 645,
+    "source": "contracts\\SkillMarketplace.algo.ts:155"
+  },
+  {
+    "teal": 646,
+    "source": "contracts\\SkillMarketplace.algo.ts:155"
+  },
+  {
+    "teal": 647,
+    "source": "contracts\\SkillMarketplace.algo.ts:155"
+  },
+  {
+    "teal": 648,
+    "source": "contracts\\SkillMarketplace.algo.ts:155"
+  },
+  {
+    "teal": 649,
+    "source": "contracts\\SkillMarketplace.algo.ts:155"
+  },
+  {
+    "teal": 650,
+    "source": "contracts\\SkillMarketplace.algo.ts:155"
+  },
+  {
+    "teal": 656,
+    "source": "contracts\\SkillMarketplace.algo.ts:155"
+  },
+  {
+    "teal": 659,
+    "source": "contracts\\SkillMarketplace.algo.ts:155"
+  },
+  {
+    "teal": 663,
+    "source": "contracts\\SkillMarketplace.algo.ts:156"
+  },
+  {
+    "teal": 664,
+    "source": "contracts\\SkillMarketplace.algo.ts:156"
+  },
+  {
+    "teal": 665,
+    "source": "contracts\\SkillMarketplace.algo.ts:156"
+  },
+  {
+    "teal": 666,
+    "source": "contracts\\SkillMarketplace.algo.ts:156"
+  },
+  {
+    "teal": 667,
+    "source": "contracts\\SkillMarketplace.algo.ts:156"
+  },
+  {
+    "teal": 668,
+    "source": "contracts\\SkillMarketplace.algo.ts:156"
+  },
+  {
+    "teal": 669,
+    "source": "contracts\\SkillMarketplace.algo.ts:156"
+  },
+  {
+    "teal": 673,
+    "source": "contracts\\SkillMarketplace.algo.ts:157"
+  },
+  {
+    "teal": 674,
+    "source": "contracts\\SkillMarketplace.algo.ts:157"
+  },
+  {
+    "teal": 675,
+    "source": "contracts\\SkillMarketplace.algo.ts:157"
+  },
+  {
+    "teal": 676,
+    "source": "contracts\\SkillMarketplace.algo.ts:157"
+  },
+  {
+    "teal": 677,
+    "source": "contracts\\SkillMarketplace.algo.ts:157"
+  },
+  {
+    "teal": 678,
+    "source": "contracts\\SkillMarketplace.algo.ts:157"
+  },
+  {
+    "teal": 679,
+    "source": "contracts\\SkillMarketplace.algo.ts:157"
+  },
+  {
+    "teal": 680,
+    "source": "contracts\\SkillMarketplace.algo.ts:157"
+  },
+  {
+    "teal": 681,
+    "source": "contracts\\SkillMarketplace.algo.ts:157"
+  },
+  {
+    "teal": 682,
+    "source": "contracts\\SkillMarketplace.algo.ts:157"
+  },
+  {
+    "teal": 683,
+    "source": "contracts\\SkillMarketplace.algo.ts:157"
+  },
+  {
+    "teal": 684,
+    "source": "contracts\\SkillMarketplace.algo.ts:157"
+  },
+  {
+    "teal": 685,
+    "source": "contracts\\SkillMarketplace.algo.ts:157"
+  },
+  {
+    "teal": 688,
+    "source": "contracts\\SkillMarketplace.algo.ts:157"
+  },
+  {
+    "teal": 692,
+    "source": "contracts\\SkillMarketplace.algo.ts:155"
+  },
+  {
+    "teal": 693,
+    "source": "contracts\\SkillMarketplace.algo.ts:155"
+  },
+  {
+    "teal": 698,
+    "source": "contracts\\SkillMarketplace.algo.ts:163"
+  },
+  {
+    "teal": 699,
+    "source": "contracts\\SkillMarketplace.algo.ts:163"
+  },
+  {
+    "teal": 702,
+    "source": "contracts\\SkillMarketplace.algo.ts:163"
+  },
+  {
+    "teal": 703,
+    "source": "contracts\\SkillMarketplace.algo.ts:163"
+  },
+  {
+    "teal": 704,
+    "source": "contracts\\SkillMarketplace.algo.ts:163"
+  },
+  {
+    "teal": 710,
+    "source": "contracts\\SkillMarketplace.algo.ts:163"
+  },
+  {
+    "teal": 713,
+    "source": "contracts\\SkillMarketplace.algo.ts:163"
+  },
+  {
+    "teal": 714,
+    "source": "contracts\\SkillMarketplace.algo.ts:163"
+  },
+  {
+    "teal": 718,
+    "source": "contracts\\SkillMarketplace.algo.ts:164"
+  },
+  {
+    "teal": 719,
+    "source": "contracts\\SkillMarketplace.algo.ts:164"
+  },
+  {
+    "teal": 720,
+    "source": "contracts\\SkillMarketplace.algo.ts:164"
+  },
+  {
+    "teal": 721,
+    "source": "contracts\\SkillMarketplace.algo.ts:164"
+  },
+  {
+    "teal": 722,
+    "source": "contracts\\SkillMarketplace.algo.ts:164"
+  },
+  {
+    "teal": 725,
+    "source": "contracts\\SkillMarketplace.algo.ts:164",
+    "errorMessage": "Skill not found"
+  },
+  {
+    "teal": 729,
+    "source": "contracts\\SkillMarketplace.algo.ts:165"
+  },
+  {
+    "teal": 730,
+    "source": "contracts\\SkillMarketplace.algo.ts:165"
+  },
+  {
+    "teal": 731,
+    "source": "contracts\\SkillMarketplace.algo.ts:165"
+  },
+  {
+    "teal": 735,
+    "source": "contracts\\SkillMarketplace.algo.ts:166"
+  },
+  {
+    "teal": 736,
+    "source": "contracts\\SkillMarketplace.algo.ts:166"
+  },
+  {
+    "teal": 737,
+    "source": "contracts\\SkillMarketplace.algo.ts:166"
+  },
+  {
+    "teal": 738,
+    "source": "contracts\\SkillMarketplace.algo.ts:165"
+  },
+  {
+    "teal": 739,
+    "source": "contracts\\SkillMarketplace.algo.ts:165"
+  },
+  {
+    "teal": 740,
+    "source": "contracts\\SkillMarketplace.algo.ts:165"
+  },
+  {
+    "teal": 741,
+    "source": "contracts\\SkillMarketplace.algo.ts:165"
+  },
+  {
+    "teal": 742,
+    "source": "contracts\\SkillMarketplace.algo.ts:166"
+  },
+  {
+    "teal": 743,
+    "source": "contracts\\SkillMarketplace.algo.ts:166"
+  },
+  {
+    "teal": 744,
+    "source": "contracts\\SkillMarketplace.algo.ts:166"
+  },
+  {
+    "teal": 745,
+    "source": "contracts\\SkillMarketplace.algo.ts:166"
+  },
+  {
+    "teal": 746,
+    "source": "contracts\\SkillMarketplace.algo.ts:166"
+  },
+  {
+    "teal": 747,
+    "source": "contracts\\SkillMarketplace.algo.ts:166"
+  },
+  {
+    "teal": 748,
+    "source": "contracts\\SkillMarketplace.algo.ts:166"
+  },
+  {
+    "teal": 749,
+    "source": "contracts\\SkillMarketplace.algo.ts:166"
+  },
+  {
+    "teal": 753,
+    "source": "contracts\\SkillMarketplace.algo.ts:166",
+    "errorMessage": "Not authorized"
+  },
+  {
+    "teal": 768,
+    "source": "contracts\\SkillMarketplace.algo.ts:169"
+  },
+  {
+    "teal": 769,
+    "source": "contracts\\SkillMarketplace.algo.ts:169"
+  },
+  {
+    "teal": 770,
+    "source": "contracts\\SkillMarketplace.algo.ts:165"
+  },
+  {
+    "teal": 771,
+    "source": "contracts\\SkillMarketplace.algo.ts:165"
+  },
+  {
+    "teal": 772,
+    "source": "contracts\\SkillMarketplace.algo.ts:165"
+  },
+  {
+    "teal": 773,
+    "source": "contracts\\SkillMarketplace.algo.ts:165"
+  },
+  {
+    "teal": 774,
+    "source": "contracts\\SkillMarketplace.algo.ts:170"
+  },
+  {
+    "teal": 775,
+    "source": "contracts\\SkillMarketplace.algo.ts:170"
+  },
+  {
+    "teal": 776,
+    "source": "contracts\\SkillMarketplace.algo.ts:165"
+  },
+  {
+    "teal": 777,
+    "source": "contracts\\SkillMarketplace.algo.ts:165"
+  },
+  {
+    "teal": 778,
+    "source": "contracts\\SkillMarketplace.algo.ts:165"
+  },
+  {
+    "teal": 779,
+    "source": "contracts\\SkillMarketplace.algo.ts:165"
+  },
+  {
+    "teal": 780,
+    "source": "contracts\\SkillMarketplace.algo.ts:170"
+  },
+  {
+    "teal": 781,
+    "source": "contracts\\SkillMarketplace.algo.ts:171"
+  },
+  {
+    "teal": 782,
+    "source": "contracts\\SkillMarketplace.algo.ts:171"
+  },
+  {
+    "teal": 783,
+    "source": "contracts\\SkillMarketplace.algo.ts:165"
+  },
+  {
+    "teal": 784,
+    "source": "contracts\\SkillMarketplace.algo.ts:165"
+  },
+  {
+    "teal": 785,
+    "source": "contracts\\SkillMarketplace.algo.ts:165"
+  },
+  {
+    "teal": 786,
+    "source": "contracts\\SkillMarketplace.algo.ts:165"
+  },
+  {
+    "teal": 787,
+    "source": "contracts\\SkillMarketplace.algo.ts:171"
+  },
+  {
+    "teal": 788,
+    "source": "contracts\\SkillMarketplace.algo.ts:172"
+  },
+  {
+    "teal": 789,
+    "source": "contracts\\SkillMarketplace.algo.ts:172"
+  },
+  {
+    "teal": 790,
+    "source": "contracts\\SkillMarketplace.algo.ts:165"
+  },
+  {
+    "teal": 791,
+    "source": "contracts\\SkillMarketplace.algo.ts:165"
+  },
+  {
+    "teal": 792,
+    "source": "contracts\\SkillMarketplace.algo.ts:165"
+  },
+  {
+    "teal": 793,
+    "source": "contracts\\SkillMarketplace.algo.ts:165"
+  },
+  {
+    "teal": 794,
+    "source": "contracts\\SkillMarketplace.algo.ts:172"
+  },
+  {
+    "teal": 795,
+    "source": "contracts\\SkillMarketplace.algo.ts:173"
+  },
+  {
+    "teal": 796,
+    "source": "contracts\\SkillMarketplace.algo.ts:173"
+  },
+  {
+    "teal": 797,
+    "source": "contracts\\SkillMarketplace.algo.ts:165"
+  },
+  {
+    "teal": 798,
+    "source": "contracts\\SkillMarketplace.algo.ts:165"
+  },
+  {
+    "teal": 799,
+    "source": "contracts\\SkillMarketplace.algo.ts:165"
+  },
+  {
+    "teal": 800,
+    "source": "contracts\\SkillMarketplace.algo.ts:165"
+  },
+  {
+    "teal": 801,
+    "source": "contracts\\SkillMarketplace.algo.ts:173"
+  },
+  {
+    "teal": 802,
+    "source": "contracts\\SkillMarketplace.algo.ts:173"
+  },
+  {
+    "teal": 803,
+    "source": "contracts\\SkillMarketplace.algo.ts:173"
+  },
+  {
+    "teal": 804,
+    "source": "contracts\\SkillMarketplace.algo.ts:174"
+  },
+  {
+    "teal": 805,
+    "source": "contracts\\SkillMarketplace.algo.ts:174"
+  },
+  {
+    "teal": 806,
+    "source": "contracts\\SkillMarketplace.algo.ts:165"
+  },
+  {
+    "teal": 807,
+    "source": "contracts\\SkillMarketplace.algo.ts:165"
+  },
+  {
+    "teal": 808,
+    "source": "contracts\\SkillMarketplace.algo.ts:165"
+  },
+  {
+    "teal": 809,
+    "source": "contracts\\SkillMarketplace.algo.ts:165"
+  },
+  {
+    "teal": 810,
+    "source": "contracts\\SkillMarketplace.algo.ts:174"
+  },
+  {
+    "teal": 811,
+    "source": "contracts\\SkillMarketplace.algo.ts:175"
+  },
+  {
+    "teal": 812,
+    "source": "contracts\\SkillMarketplace.algo.ts:175"
+  },
+  {
+    "teal": 813,
+    "source": "contracts\\SkillMarketplace.algo.ts:165"
+  },
+  {
+    "teal": 814,
+    "source": "contracts\\SkillMarketplace.algo.ts:165"
+  },
+  {
+    "teal": 815,
+    "source": "contracts\\SkillMarketplace.algo.ts:165"
+  },
+  {
+    "teal": 816,
+    "source": "contracts\\SkillMarketplace.algo.ts:165"
+  },
+  {
+    "teal": 817,
+    "source": "contracts\\SkillMarketplace.algo.ts:175"
+  },
+  {
+    "teal": 818,
+    "source": "contracts\\SkillMarketplace.algo.ts:176"
+  },
+  {
+    "teal": 819,
+    "source": "contracts\\SkillMarketplace.algo.ts:176"
+  },
+  {
+    "teal": 820,
+    "source": "contracts\\SkillMarketplace.algo.ts:165"
+  },
+  {
+    "teal": 821,
+    "source": "contracts\\SkillMarketplace.algo.ts:165"
+  },
+  {
+    "teal": 822,
+    "source": "contracts\\SkillMarketplace.algo.ts:165"
+  },
+  {
+    "teal": 823,
+    "source": "contracts\\SkillMarketplace.algo.ts:165"
+  },
+  {
+    "teal": 824,
+    "source": "contracts\\SkillMarketplace.algo.ts:176"
+  },
+  {
+    "teal": 825,
+    "source": "contracts\\SkillMarketplace.algo.ts:176"
+  },
+  {
+    "teal": 826,
+    "source": "contracts\\SkillMarketplace.algo.ts:176"
+  },
+  {
+    "teal": 827,
+    "source": "contracts\\SkillMarketplace.algo.ts:177"
+  },
+  {
+    "teal": 828,
+    "source": "contracts\\SkillMarketplace.algo.ts:177"
+  },
+  {
+    "teal": 829,
+    "source": "contracts\\SkillMarketplace.algo.ts:165"
+  },
+  {
+    "teal": 830,
+    "source": "contracts\\SkillMarketplace.algo.ts:165"
+  },
+  {
+    "teal": 831,
+    "source": "contracts\\SkillMarketplace.algo.ts:165"
+  },
+  {
+    "teal": 832,
+    "source": "contracts\\SkillMarketplace.algo.ts:165"
+  },
+  {
+    "teal": 833,
+    "source": "contracts\\SkillMarketplace.algo.ts:177"
+  },
+  {
+    "teal": 834,
+    "source": "contracts\\SkillMarketplace.algo.ts:177"
+  },
+  {
+    "teal": 835,
+    "source": "contracts\\SkillMarketplace.algo.ts:177"
+  },
+  {
+    "teal": 836,
+    "source": "contracts\\SkillMarketplace.algo.ts:178"
+  },
+  {
+    "teal": 837,
+    "source": "contracts\\SkillMarketplace.algo.ts:178"
+  },
+  {
+    "teal": 838,
+    "source": "contracts\\SkillMarketplace.algo.ts:168"
+  },
+  {
+    "teal": 842,
+    "source": "contracts\\SkillMarketplace.algo.ts:180"
+  },
+  {
+    "teal": 843,
+    "source": "contracts\\SkillMarketplace.algo.ts:180"
+  },
+  {
+    "teal": 844,
+    "source": "contracts\\SkillMarketplace.algo.ts:180"
+  },
+  {
+    "teal": 845,
+    "source": "contracts\\SkillMarketplace.algo.ts:180"
+  },
+  {
+    "teal": 846,
+    "source": "contracts\\SkillMarketplace.algo.ts:163"
+  },
+  {
+    "teal": 851,
+    "source": "contracts\\SkillMarketplace.algo.ts:186"
+  },
+  {
+    "teal": 852,
+    "source": "contracts\\SkillMarketplace.algo.ts:186"
+  },
+  {
+    "teal": 855,
+    "source": "contracts\\SkillMarketplace.algo.ts:186"
+  },
+  {
+    "teal": 856,
+    "source": "contracts\\SkillMarketplace.algo.ts:186"
+  },
+  {
+    "teal": 857,
+    "source": "contracts\\SkillMarketplace.algo.ts:186"
+  },
+  {
+    "teal": 863,
+    "source": "contracts\\SkillMarketplace.algo.ts:186"
+  },
+  {
+    "teal": 867,
+    "source": "contracts\\SkillMarketplace.algo.ts:187"
+  },
+  {
+    "teal": 868,
+    "source": "contracts\\SkillMarketplace.algo.ts:187"
+  },
+  {
+    "teal": 869,
+    "source": "contracts\\SkillMarketplace.algo.ts:187"
+  },
+  {
+    "teal": 870,
+    "source": "contracts\\SkillMarketplace.algo.ts:187"
+  },
+  {
+    "teal": 873,
+    "source": "contracts\\SkillMarketplace.algo.ts:187",
+    "errorMessage": "Admin only"
+  },
+  {
+    "teal": 877,
+    "source": "contracts\\SkillMarketplace.algo.ts:188"
+  },
+  {
+    "teal": 878,
+    "source": "contracts\\SkillMarketplace.algo.ts:188"
+  },
+  {
+    "teal": 879,
+    "source": "contracts\\SkillMarketplace.algo.ts:188"
+  },
+  {
+    "teal": 882,
+    "source": "contracts\\SkillMarketplace.algo.ts:188",
+    "errorMessage": "Max fee is 10%"
+  },
+  {
+    "teal": 886,
+    "source": "contracts\\SkillMarketplace.algo.ts:189"
+  },
+  {
+    "teal": 887,
+    "source": "contracts\\SkillMarketplace.algo.ts:189"
+  },
+  {
+    "teal": 888,
+    "source": "contracts\\SkillMarketplace.algo.ts:189"
+  },
+  {
+    "teal": 889,
+    "source": "contracts\\SkillMarketplace.algo.ts:186"
+  },
+  {
+    "teal": 892,
+    "source": "contracts\\SkillMarketplace.algo.ts:24"
+  },
+  {
+    "teal": 893,
+    "source": "contracts\\SkillMarketplace.algo.ts:24"
+  },
+  {
+    "teal": 894,
+    "source": "contracts\\SkillMarketplace.algo.ts:24"
+  },
+  {
+    "teal": 897,
+    "source": "contracts\\SkillMarketplace.algo.ts:24",
+    "errorMessage": "this contract does not implement the given ABI method for create NoOp"
+  },
+  {
+    "teal": 900,
+    "source": "contracts\\SkillMarketplace.algo.ts:24"
+  },
+  {
+    "teal": 901,
+    "source": "contracts\\SkillMarketplace.algo.ts:24"
+  },
+  {
+    "teal": 902,
+    "source": "contracts\\SkillMarketplace.algo.ts:24"
+  },
+  {
+    "teal": 903,
+    "source": "contracts\\SkillMarketplace.algo.ts:24"
+  },
+  {
+    "teal": 904,
+    "source": "contracts\\SkillMarketplace.algo.ts:24"
+  },
+  {
+    "teal": 905,
+    "source": "contracts\\SkillMarketplace.algo.ts:24"
+  },
+  {
+    "teal": 906,
+    "source": "contracts\\SkillMarketplace.algo.ts:24"
+  },
+  {
+    "teal": 909,
+    "source": "contracts\\SkillMarketplace.algo.ts:24",
+    "errorMessage": "this contract does not implement the given ABI method for call NoOp"
+  }
+]
