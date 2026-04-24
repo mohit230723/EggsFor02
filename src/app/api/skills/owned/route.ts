@@ -21,6 +21,7 @@ export async function GET(req: NextRequest) {
     // We do this in parallel to be efficient
     const ownedSkills = await Promise.all(
       allSkills.map(async (skill) => {
+        if (skill.seller === address) return skill; // Sellers automatically own their skills
         const hasAccess = await checkAccess(skill.id, address);
         return hasAccess ? skill : null;
       })

@@ -1,0 +1,177 @@
+{
+  "name": "AgentRegistry",
+  "desc": "",
+  "methods": [
+    {
+      "name": "createApplication",
+      "args": [
+        {
+          "name": "deployFee",
+          "type": "uint64"
+        },
+        {
+          "name": "skillMarketAppId",
+          "type": "uint64"
+        }
+      ],
+      "returns": {
+        "type": "void"
+      }
+    },
+    {
+      "name": "registerAgent",
+      "desc": "Register a new agent on-chain.\nThe agent wallet must already exist on-chain.\nRequires a deploy fee payment + MBR for box storage.",
+      "args": [
+        {
+          "name": "deployPayment",
+          "type": "pay"
+        },
+        {
+          "name": "agentAddress",
+          "type": "address"
+        },
+        {
+          "name": "name",
+          "type": "byte[32]"
+        }
+      ],
+      "returns": {
+        "type": "void"
+      }
+    },
+    {
+      "name": "equipSkills",
+      "desc": "Equip skills onto an agent. Only owner can call this.\nSkill IDs must be valid purchases in the SkillMarketplace.",
+      "args": [
+        {
+          "name": "agentAddress",
+          "type": "address"
+        },
+        {
+          "name": "skill1",
+          "type": "uint64"
+        },
+        {
+          "name": "skill2",
+          "type": "uint64"
+        },
+        {
+          "name": "skill3",
+          "type": "uint64"
+        }
+      ],
+      "returns": {
+        "type": "void"
+      }
+    },
+    {
+      "name": "createMatch",
+      "desc": "Create a match. Agent A initiates and locks their stake.",
+      "args": [
+        {
+          "name": "stakePayment",
+          "type": "pay"
+        },
+        {
+          "name": "agentA",
+          "type": "address"
+        },
+        {
+          "name": "gameType",
+          "type": "uint64"
+        },
+        {
+          "name": "commitHashA",
+          "type": "byte[32]"
+        }
+      ],
+      "returns": {
+        "type": "uint64"
+      }
+    },
+    {
+      "name": "joinMatch",
+      "desc": "Agent B joins an open match and commits their move hash.",
+      "args": [
+        {
+          "name": "stakePayment",
+          "type": "pay"
+        },
+        {
+          "name": "matchId",
+          "type": "uint64"
+        },
+        {
+          "name": "agentB",
+          "type": "address"
+        },
+        {
+          "name": "commitHashB",
+          "type": "byte[32]"
+        }
+      ],
+      "returns": {
+        "type": "void"
+      }
+    },
+    {
+      "name": "settleMatch",
+      "desc": "Settle a match after both moves are revealed.\nAnyone can call this with the revealed moves + salts.\nContract verifies hashes then determines the winner.",
+      "args": [
+        {
+          "name": "matchId",
+          "type": "uint64"
+        },
+        {
+          "name": "moveA",
+          "type": "uint64"
+        },
+        {
+          "name": "saltA",
+          "type": "byte[32]"
+        },
+        {
+          "name": "moveB",
+          "type": "uint64"
+        },
+        {
+          "name": "saltB",
+          "type": "byte[32]"
+        }
+      ],
+      "returns": {
+        "type": "address"
+      }
+    },
+    {
+      "name": "awardEggs",
+      "desc": "Award Eggs to an agent (admin only, for other game types)",
+      "args": [
+        {
+          "name": "agentAddress",
+          "type": "address"
+        },
+        {
+          "name": "amount",
+          "type": "uint64"
+        }
+      ],
+      "returns": {
+        "type": "void"
+      }
+    },
+    {
+      "name": "setDeployFee",
+      "desc": "Update deploy fee (admin only)",
+      "args": [
+        {
+          "name": "fee",
+          "type": "uint64"
+        }
+      ],
+      "returns": {
+        "type": "void"
+      }
+    }
+  ]
+}
