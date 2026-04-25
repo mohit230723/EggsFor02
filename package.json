@@ -20,6 +20,7 @@
     "@perawallet/connect": "^1.5.1",
     "@pinata/sdk": "^2.1.0",
     "@supabase/supabase-js": "^2.104.1",
+    "@xyflow/react": "^12.10.2",
     "algosdk": "^3.5.2",
     "gsap": "^3.14.2",
     "lucide-react": "^1.8.0",

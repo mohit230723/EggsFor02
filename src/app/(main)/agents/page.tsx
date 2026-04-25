@@ -303,12 +303,8 @@ export default function AgentsPage() {
   const { activeAddress } = useAlgorandWallet();
   const [ownedSkills, setOwnedSkills] = useState<SkillListing[]>([]);
   const [agents, setAgents] = useState<AgentInfo[]>([]);
-  const [selectedAgent, setSelectedAgent] = useState<AgentInfo | null>(null);
   const [loadingSkills, setLoadingSkills] = useState(false);
   const [showDeploy, setShowDeploy] = useState(false);
-
-  // Local state for equipped skills (keyed by agentAddress)
-  const [equippedSkillsMap, setEquippedSkillsMap] = useState<Record<string, SkillListing[]>>({});
 
   // Mocked eggs — will be fetched from AgentRegistry contract once deployed
   const [eggs] = useState(0);
@@ -339,7 +335,6 @@ export default function AgentsPage() {
 
   function handleDeployed(newAgent: AgentInfo) {
     setAgents(prev => [...prev, newAgent]);
-    setSelectedAgent(newAgent);
   }
 
   return (
@@ -399,8 +394,8 @@ export default function AgentsPage() {
                     <AgentCard
                       key={a.agentAddress}
                       agent={a}
-                      isSelected={selectedAgent?.agentAddress === a.agentAddress}
-                      onSelect={() => setSelectedAgent(a)}
+                      isSelected={false}
+                      onSelect={() => {}}
                     />
                   ))
                 )}
@@ -429,10 +424,6 @@ export default function AgentsPage() {
                 ) : (
                   ownedSkills.map(skill => {
                     const Icon = TYPE_ICONS[skill.skillType] || Code;
-                    const alreadyEquipped = selectedAgent && (
-                      // placeholder for future equip logic
-                      false
-                    );
                     return (
                       <div
                         key={skill.id}
@@ -463,174 +454,24 @@ export default function AgentsPage() {
 
           {/* ── Main: Agent Detail / Loadout ── */}
           <div className="lg:col-span-3 space-y-6">
-
-            {!selectedAgent ? (
-              /* No agent selected */
-              <div className="punk-card checkerboard-bg min-h-[500px] flex items-center justify-center p-8 text-center border-4">
-                <div>
-                  <div className="text-5xl mb-6 flex justify-center gap-4">
-                    <span className="opacity-20 animate-pulse">🤖</span>
-                    <span className="animate-bounce">⚡</span>
-                    <span className="opacity-20 animate-pulse">🤖</span>
-                  </div>
-                  <p className="text-inkBlack text-xl mb-3 font-heading tracking-widest uppercase">Select an Agent</p>
-                  <p className="text-streetGray text-sm font-mono max-w-md mx-auto">
-                    Pick an agent from your roster to view stats and manage their skill loadout.
-                  </p>
-                  {agents.length === 0 && (
-                    <div className="mt-8">
-                      <Button variant="primary" onClick={() => setShowDeploy(true)}>
-                        Deploy Your First Agent →
-                      </Button>
-                    </div>
-                  )}
+            <div className="punk-card checkerboard-bg min-h-[500px] flex items-center justify-center p-8 text-center border-4 border-inkBlack shadow-[8px_8px_0_#1a1a1a]">
+              <div>
+                <div className="text-5xl mb-6 flex justify-center gap-4">
+                  <span className="opacity-30 blur-[1px]">🕸️</span>
+                  <span className="animate-bounce">⚡</span>
+                  <span className="opacity-30 blur-[1px]">🕸️</span>
                 </div>
-              </div>
-            ) : (
-              /* Agent Detail Panel */
-              <div className="space-y-6">
-
-                {/* Agent Header */}
-                <div className="punk-card p-6 bg-inkBlack text-white">
-                  <div className="flex items-start justify-between gap-4">
-                    <div className="flex items-center gap-4">
-                      <div className="w-16 h-16 bg-punkPink/20 border-2 border-punkPink rounded flex items-center justify-center">
-                        <Bot size={32} className="text-punkPink" />
-                      </div>
-                      <div>
-                        <h2 className="font-heading text-2xl uppercase tracking-widest text-white">
-                          {selectedAgent.agentName}
-                        </h2>
-                        <p className="font-mono text-xs text-streetGray mt-1 break-all">
-                          {selectedAgent.agentAddress}
-                        </p>
-                        <a
-                          href={`https://testnet.explorer.perawallet.app/accounts/${selectedAgent.agentAddress}`}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-punkYellow text-[10px] font-mono hover:underline mt-1 inline-block"
-                        >
-                          View on Pera Explorer →
-                        </a>
-                      </div>
-                    </div>
-                    <div className="text-right shrink-0">
-                      <div className="flex items-center gap-2 justify-end mb-1">
-                        <Wallet size={12} className="text-streetGray" />
-                        <span className="font-mono text-sm font-bold text-punkYellow">
-                          {selectedAgent.balance?.toFixed(3) ?? '...'} ALGO
-                        </span>
-                      </div>
-                      <span className="text-[9px] font-mono text-streetGray uppercase">Agent Balance</span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Stats Row */}
-                <div className="grid grid-cols-3 gap-4">
-                  {[
-                    { icon: Trophy, label: 'Wins', value: '0', color: 'text-punkGreen' },
-                    { icon: Shield, label: 'Losses', value: '0', color: 'text-punkRed' },
-                    { icon: Zap, label: 'Eggs Earned', value: '0', color: 'text-punkYellow' },
-                  ].map(stat => (
-                    <div key={stat.label} className="punk-card p-4 text-center border-2 border-inkBlack">
-                      <stat.icon size={20} className={`mx-auto mb-2 ${stat.color}`} />
-                      <p className={`font-heading text-2xl font-bold ${stat.color}`}>{stat.value}</p>
-                      <p className="text-streetGray text-[10px] uppercase font-mono">{stat.label}</p>
-                    </div>
-                  ))}
-                </div>
-
-                {/* Skill Loadout */}
-                <div className="punk-card p-6 border-2 border-inkBlack space-y-4">
-                  <div className="flex items-center justify-between">
-                    <h3 className="font-heading text-xl uppercase tracking-widest text-inkBlack">
-                      SKILL LOADOUT
-                    </h3>
-                    <span className="text-streetGray text-[10px] font-mono uppercase">
-                      0/{tier.maxSkills} slots used
-                    </span>
-                  </div>
-
-                  <div className={`grid grid-cols-${Math.min(tier.maxSkills, 3)} gap-3`}>
-                    {Array.from({ length: tier.maxSkills }).map((_, i) => {
-                      const agentEquipped = selectedAgent ? equippedSkillsMap[selectedAgent.agentAddress] || [] : [];
-                      const equippedSkill = agentEquipped[i];
-
-                      return (
-                        <div
-                          key={i}
-                          onDragOver={(e) => e.preventDefault()}
-                          onDrop={(e) => {
-                            e.preventDefault();
-                            try {
-                              const skill = JSON.parse(e.dataTransfer.getData('application/json'));
-                              if (selectedAgent && skill) {
-                                setEquippedSkillsMap(prev => {
-                                  const current = prev[selectedAgent.agentAddress] || [];
-                                  if (current.some(s => s?.id === skill.id)) return prev; // Already equipped
-                                  const updated = [...current];
-                                  updated[i] = skill;
-                                  return { ...prev, [selectedAgent.agentAddress]: updated };
-                                });
-                              }
-                            } catch (err) { }
-                          }}
-                          className={`border-2 ${equippedSkill ? 'border-solid border-punkGreen bg-punkGreen/5' : 'border-dashed border-inkBlack/30 hover:border-punkPink hover:bg-punkPink/5'} rounded p-4 flex flex-col items-center justify-center text-center gap-2 min-h-[100px] transition-all cursor-pointer`}
-                        >
-                          {equippedSkill ? (
-                            <>
-                              <div className="p-1.5 bg-punkGreen text-white rounded shrink-0">
-                                {(() => {
-                                  const Icon = TYPE_ICONS[equippedSkill.skillType] || Code;
-                                  return <Icon size={16} />;
-                                })()}
-                              </div>
-                              <p className="font-heading text-xs uppercase tracking-tighter text-inkBlack w-full truncate">{equippedSkill.name}</p>
-                            </>
-                          ) : (
-                            <>
-                              <Plus size={20} className="text-inkBlack/20" />
-                              <p className="text-[10px] text-streetGray font-mono uppercase">Skill Slot {i + 1}</p>
-                            </>
-                          )}
-                        </div>
-                      );
-                    })}
-                  </div>
-
-                  <p className="text-[10px] text-streetGray font-mono text-center">
-                    Drag a skill from your inventory to equip it. Agent will autonomously purchase via x402 on the blockchain.
-                  </p>
-                </div>
-
-                {/* x402 Activity Log */}
-                <div className="punk-card p-5 border-2 border-inkBlack bg-inkBlack/5 space-y-3">
-                  <h3 className="font-heading text-sm uppercase tracking-widest text-inkBlack flex items-center gap-2">
-                    <Terminal size={14} />
-                    x402 Activity Log
-                  </h3>
-                  <div className="font-mono text-xs text-streetGray space-y-1">
-                    <p className="text-inkBlack/30 italic">Agent has no on-chain activity yet.</p>
-                    <p className="text-inkBlack/20">
-                      {'>'} Activity will appear here once your agent joins a match or purchases a skill.
-                    </p>
-                  </div>
-                </div>
-
-                {/* Arena CTA */}
-                <div className="flex gap-3">
-                  <a href="/arena" className="flex-1">
-                    <Button variant="primary" className="w-full">
-                      Enter Arena ⚔️
-                    </Button>
-                  </a>
-                  <Button variant="secondary" className="flex-1">
-                    Buy Skill via x402
+                <p className="text-inkBlack text-3xl mb-3 font-heading tracking-widest uppercase">Agent Node Editor</p>
+                <p className="text-streetGray text-sm font-mono max-w-md mx-auto mb-8 bg-white/50 p-4 border-2 border-dashed border-inkBlack">
+                  Wire up your agent networks, configure AI skills, and execute complex logic directly within the node graph editor.
+                </p>
+                <a href="/agents/editor" target="_blank" rel="noopener noreferrer" className="inline-block">
+                  <Button variant="primary" className="text-lg px-8 py-4 shadow-xl hover:-translate-y-1 hover:shadow-[6px_6px_0_#1a1a1a] transition-all bg-punkPink border-4 border-inkBlack">
+                    Open Node Editor →
                   </Button>
-                </div>
+                </a>
               </div>
-            )}
+            </div>
           </div>
         </div>
       )}
