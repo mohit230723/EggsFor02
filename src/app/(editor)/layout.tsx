@@ -1,5 +1,7 @@
 import { Providers } from "@/components/Providers";
 import "./editor.css";
+import "@xyflow/react/dist/style.css";
+
 
 export const metadata = {
   title: "CORTEX Node Editor // ノードエディタ",

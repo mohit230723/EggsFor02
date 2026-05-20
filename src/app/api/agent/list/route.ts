@@ -21,12 +21,16 @@ export async function GET(req: NextRequest) {
   }
 
   try {
-    // 1. Fetch all agents for this owner from Supabase (no private keys returned)
-    const { data, error } = await supabase
+    // 1. Fetch agents from Supabase (no private keys returned)
+    let query = supabase
       .from('agents')
-      .select('agent_address, agent_name, owner_address, created_at')
-      .eq('owner_address', owner)
-      .order('created_at', { ascending: true });
+      .select('agent_address, agent_name, owner_address, created_at, equipped_skill_1, equipped_skill_2, equipped_skill_3');
+    
+    if (owner !== 'all') {
+      query = query.eq('owner_address', owner);
+    }
+    
+    const { data, error } = await query.order('created_at', { ascending: true });
 
     if (error) {
       console.error('Supabase fetch error:', error);
@@ -49,6 +53,9 @@ export async function GET(req: NextRequest) {
           agentName: agent.agent_name,
           ownerAddress: agent.owner_address,
           balance,
+          equippedSkill1: agent.equipped_skill_1,
+          equippedSkill2: agent.equipped_skill_2,
+          equippedSkill3: agent.equipped_skill_3,
         };
       })
     );
@@ -59,3 +66,4 @@ export async function GET(req: NextRequest) {
     return NextResponse.json({ agents: [] }, { status: 500 });
   }
 }
+

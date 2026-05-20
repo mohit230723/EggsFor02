@@ -5,8 +5,14 @@ import { Handle, Position, type NodeProps } from "@xyflow/react";
 import { Code, ChevronDown, ChevronUp } from "lucide-react";
 import type { SkillNodeData } from "../../types/nodes";
 
-function SkillNodeComponent({ data }: NodeProps & { data: SkillNodeData }) {
+import { useAlgorandWallet } from "@/components/Providers";
+
+function SkillNodeComponent({ data }: NodeProps & { data: SkillNodeData & { id: number } }) {
+  const { activeAddress } = useAlgorandWallet();
   const [expanded, setExpanded] = useState(false);
+  const [loadingCode, setLoadingCode] = useState(false);
+  const [codeSource, setCodeSource] = useState(data.code?.source || "");
+  const [loadError, setLoadError] = useState("");
 
   const typeColors: Record<string, string> = {
     Logic: "sticker-green",
@@ -15,6 +21,40 @@ function SkillNodeComponent({ data }: NodeProps & { data: SkillNodeData }) {
     Data: "sticker-orange",
     Prediction: "sticker-pink",
     Strategy: "sticker-yellow",
+  };
+
+  const handleToggleExpand = async () => {
+    const nextState = !expanded;
+    setExpanded(nextState);
+
+    if (nextState && !codeSource && data.id) {
+      if (!activeAddress) {
+        setLoadError("Connect wallet to view code");
+        return;
+      }
+      setLoadingCode(true);
+      setLoadError("");
+      try {
+        const res = await fetch(`/api/skills/${data.id}/content`, {
+          headers: {
+            Authorization: `Bearer ${activeAddress}`
+          }
+        });
+        if (res.status === 402) {
+          setLoadError("Purchase required to decrypt");
+        } else if (!res.ok) {
+          setLoadError("Failed to load code from IPFS");
+        } else {
+          const body = await res.json();
+          setCodeSource(body.source);
+        }
+      } catch (err) {
+        console.error("Fetch code error:", err);
+        setLoadError("Connection error");
+      } finally {
+        setLoadingCode(false);
+      }
+    }
   };
 
   return (
@@ -39,7 +79,7 @@ function SkillNodeComponent({ data }: NodeProps & { data: SkillNodeData }) {
           >
             {data.type}
           </span>
-          <span className="text-[10px] font-mono text-mutedText">
+          <span className="text-[10px] font-mono text-streetGray">
             v{data.version}
           </span>
         </div>
@@ -51,12 +91,12 @@ function SkillNodeComponent({ data }: NodeProps & { data: SkillNodeData }) {
 
         {/* Entry point */}
         <div className="font-mono text-[11px] text-punkPurple bg-bgCream px-2 py-1 rounded border-2 border-borderSoft">
-          ƒ {data.entry_point}()
+          ƒ {data.entry_point || "compute"}()
         </div>
 
         {/* Expandable code preview */}
         <button
-          onClick={() => setExpanded(!expanded)}
+          onClick={handleToggleExpand}
           className="flex items-center gap-1 text-[10px] text-streetGray hover:text-punkPink transition-colors w-full"
         >
           {expanded ? (
@@ -68,9 +108,17 @@ function SkillNodeComponent({ data }: NodeProps & { data: SkillNodeData }) {
         </button>
 
         {expanded && (
-          <pre className="text-[10px] font-mono bg-inkBlack text-punkGreen p-2 rounded overflow-x-auto max-h-[120px] overflow-y-auto border-2 border-inkBlack">
-            {data.code.source}
-          </pre>
+          <div className="mt-2">
+            {loadingCode ? (
+              <div className="text-[10px] font-mono text-streetGray animate-pulse">Decrypting from IPFS...</div>
+            ) : loadError ? (
+              <div className="text-[10px] font-mono text-punkRed font-bold">{loadError}</div>
+            ) : (
+              <pre className="text-[10px] font-mono bg-inkBlack text-punkGreen p-2 rounded overflow-x-auto max-h-[120px] overflow-y-auto border-2 border-inkBlack">
+                {codeSource}
+              </pre>
+            )}
+          </div>
         )}
       </div>
 
@@ -84,5 +132,6 @@ function SkillNodeComponent({ data }: NodeProps & { data: SkillNodeData }) {
     </div>
   );
 }
+
 
 export const SkillNode = memo(SkillNodeComponent);

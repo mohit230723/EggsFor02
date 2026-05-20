@@ -48,6 +48,9 @@ interface AgentInfo {
   agentName: string;
   ownerAddress: string;
   balance?: number; // ALGO balance of the agent wallet
+  equippedSkill1?: string;
+  equippedSkill2?: string;
+  equippedSkill3?: string;
 }
 
 // ─── Sub-components ──────────────────────────────────────────────────────────
@@ -93,24 +96,36 @@ function EggsLevelBar({ eggs }: { eggs: number }) {
 
 function AgentCard({ agent, onSelect, isSelected }: { agent: AgentInfo; onSelect: () => void; isSelected: boolean }) {
   const shortAddr = `${agent.agentAddress.slice(0, 6)}…${agent.agentAddress.slice(-4)}`;
+  const skillsCount = [agent.equippedSkill1, agent.equippedSkill2, agent.equippedSkill3].filter(Boolean).length;
+  const hasSkills = skillsCount > 0;
+
   return (
     <div
       onClick={onSelect}
-      className={`punk-card p-4 cursor-pointer border-2 transition-all ${isSelected
-        ? 'border-punkPink bg-punkPink/5'
-        : 'border-inkBlack hover:border-punkPurple bg-white'
-        }`}
+      className={`punk-card p-4 cursor-pointer border-2 transition-all relative overflow-hidden ${
+        hasSkills
+          ? 'border-punkPink bg-punkPink/5 shadow-[0_0_15px_rgba(255,45,138,0.25)]'
+          : 'border-inkBlack hover:border-punkPurple bg-white'
+      }`}
     >
       <div className="flex items-center gap-3">
-        <div className={`p-2 rounded ${isSelected ? 'bg-punkPink text-white' : 'bg-inkBlack text-white'}`}>
+        <div className={`p-2 rounded ${hasSkills ? 'bg-punkPink text-white' : 'bg-inkBlack text-white'}`}>
           <Bot size={18} />
         </div>
         <div className="flex-1 min-w-0">
           <h4 className="font-heading text-sm text-inkBlack uppercase tracking-tight truncate">{agent.agentName}</h4>
           <p className="font-mono text-[9px] text-streetGray">{shortAddr}</p>
         </div>
-        {isSelected && <ChevronRight size={14} className="text-punkPink shrink-0" />}
       </div>
+      
+      {hasSkills && (
+        <div className="mt-2 flex flex-wrap gap-1">
+          <span className="sticker sticker-green !text-[8px] !py-0.5 !px-1.5 !transform-none font-bold uppercase tracking-wider">
+            🛡️ ARMOR: {skillsCount} SKILLS
+          </span>
+        </div>
+      )}
+
       {agent.balance !== undefined && (
         <div className="mt-2 pt-2 border-t border-borderSoft flex items-center gap-1">
           <Wallet size={10} className="text-streetGray" />
@@ -123,6 +138,7 @@ function AgentCard({ agent, onSelect, isSelected }: { agent: AgentInfo; onSelect
     </div>
   );
 }
+
 
 function DeployModal({
   onClose,
@@ -465,7 +481,7 @@ export default function AgentsPage() {
                 <p className="text-streetGray text-sm font-mono max-w-md mx-auto mb-8 bg-white/50 p-4 border-2 border-dashed border-inkBlack">
                   Wire up your agent networks, configure AI skills, and execute complex logic directly within the node graph editor.
                 </p>
-                <a href="/agents/editor" target="_blank" rel="noopener noreferrer" className="inline-block">
+                <a href="/agents/editor" className="inline-block">
                   <Button variant="primary" className="text-lg px-8 py-4 shadow-xl hover:-translate-y-1 hover:shadow-[6px_6px_0_#1a1a1a] transition-all bg-punkPink border-4 border-inkBlack">
                     Open Node Editor →
                   </Button>
