@@ -77,6 +77,26 @@ export function ArenaMatchRunner() {
   const [result, setResult] = useState<MatchResult | null>(null);
   const [error, setError] = useState<string | null>(null);
 
+  const [playbackTurns, setPlaybackTurns] = useState<MatchTurn[]>([]);
+  const [isPlayingback, setIsPlayingback] = useState(false);
+  const terminalRef = React.useRef<HTMLDivElement>(null);
+  const playbackIntervalRef = React.useRef<any>(null);
+
+  useEffect(() => {
+    if (terminalRef.current) {
+      terminalRef.current.scrollTop = terminalRef.current.scrollHeight;
+    }
+  }, [playbackTurns]);
+
+  // Clean up interval on unmount
+  useEffect(() => {
+    return () => {
+      if (playbackIntervalRef.current) {
+        clearInterval(playbackIntervalRef.current);
+      }
+    };
+  }, []);
+
   // Fetch agents & owned skills on mount/wallet connection
   useEffect(() => {
     async function loadArenaData() {
@@ -190,8 +210,16 @@ export function ArenaMatchRunner() {
   };
 
   const simulateMatch = async () => {
+    // Clear any previous running simulation interval first!
+    if (playbackIntervalRef.current) {
+      clearInterval(playbackIntervalRef.current);
+      playbackIntervalRef.current = null;
+    }
+
     setIsRunning(true);
     setResult(null);
+    setPlaybackTurns([]);
+    setIsPlayingback(false);
     setError(null);
 
     const p1Agent = agents.find(a => a.agentAddress === p1AgentSelection);
@@ -215,14 +243,62 @@ export function ArenaMatchRunner() {
         body: JSON.stringify({ gameId, agent1, agent2 })
       });
 
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.error || "Simulation failed");
-      
-      setResult(data);
+      if (!res.ok || !res.body) {
+        const err = await res.json().catch(() => ({ error: "Unknown error" }));
+        throw new Error(err.error || "Simulation failed");
+      }
+
+      setIsRunning(false);
+      setIsPlayingback(true);
+
+      // ─── SSE stream reader ────────────────────────────────────────────────
+      const reader = res.body.getReader();
+      const decoder = new TextDecoder();
+      let buffer = "";
+
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+
+        buffer += decoder.decode(value, { stream: true });
+
+        // SSE events are separated by \n\n
+        const parts = buffer.split("\n\n");
+        buffer = parts.pop() ?? ""; // keep incomplete last part
+
+        for (const part of parts) {
+          const lines = part.split("\n");
+          let eventType = "";
+          let dataStr = "";
+
+          for (const line of lines) {
+            if (line.startsWith("event: ")) eventType = line.slice(7).trim();
+            if (line.startsWith("data: ")) dataStr = line.slice(6).trim();
+          }
+
+          if (!dataStr) continue;
+
+          try {
+            const payload = JSON.parse(dataStr);
+            if (eventType === "turn") {
+              setPlaybackTurns(prev => [...prev, payload]);
+            } else if (eventType === "result") {
+              setIsPlayingback(false);
+              setResult(payload);
+            }
+          } catch {
+            // malformed chunk, skip
+          }
+        }
+      }
+
+      setIsPlayingback(false);
+
     } catch (err: unknown) {
       setError(err instanceof Error ? err.message : "Unknown error");
     } finally {
       setIsRunning(false);
+      setIsPlayingback(false);
     }
   };
 
@@ -288,9 +364,9 @@ export function ArenaMatchRunner() {
                 variant="primary" 
                 className="w-full uppercase font-heading tracking-widest text-sm" 
                 onClick={simulateMatch}
-                disabled={isRunning || fetchingCode}
+                disabled={isRunning || isPlayingback || fetchingCode}
               >
-                {isRunning ? "Simulating Swarm Warfare..." : "Execute Simulation ⚡"}
+                {isRunning ? "Running Brain Simulation..." : isPlayingback ? "Streaming Swarm Warfare..." : "Execute Simulation ⚡"}
               </Button>
               {error && <p className="text-punkRed text-sm mt-2 font-mono font-bold">Error: {error}</p>}
             </div>
@@ -341,37 +417,72 @@ export function ArenaMatchRunner() {
       </Card>
 
       {/* Telemetry results */}
-      {result && (
+      {(result || playbackTurns.length > 0) && (
         <Card variant="highlight" className="p-6">
           <h3 className="text-2xl font-heading text-inkBlack tracking-widest uppercase mb-6 flex items-center gap-3">
-            <span className="w-3 h-3 rounded-full bg-punkGreen animate-pulse" />
-            Simulation Telemetry
-            <span className="font-jp text-sm text-punkPink opacity-50">テレメトリー</span>
+            <span className={`w-3 h-3 rounded-full ${isPlayingback ? 'bg-punkPink animate-ping' : 'bg-punkGreen animate-pulse'}`} />
+            {isPlayingback ? "Swarm Simulation Live Stream" : "Simulation Telemetry"}
+            <span className="font-jp text-sm text-punkPink opacity-50">{isPlayingback ? "ライブ" : "テレメトリー"}</span>
           </h3>
           
-          <div className="bg-inkBlack border-3 border-borderHard rounded-lg h-64 overflow-y-auto p-4 space-y-3 font-mono text-[11px] md:text-xs">
-            {result.turns.map((turn, i) => (
-              <div key={i} className="border-b border-white/10 pb-2 mb-2 last:border-0">
-                <div className="text-streetGray mb-1">=== TURN {turn.turnNumber} ===</div>
-                <div className="flex flex-col md:flex-row gap-2 md:gap-8">
-                  <div className="text-white/50">State Before: {JSON.stringify(i === 0 ? "START" : result.turns[i-1].stateAfter)}</div>
-                  <div className="text-punkGreen">P1 Move: {JSON.stringify(turn.p1Move)}</div>
-                  <div className="text-punkBlue">P2 Move: {JSON.stringify(turn.p2Move)}</div>
+          <div 
+            ref={terminalRef}
+            className="bg-inkBlack border-3 border-borderHard rounded-lg h-[350px] overflow-y-auto p-4 space-y-4 font-mono text-[11px] md:text-xs scroll-smooth"
+          >
+            {playbackTurns.map((turn, i) => {
+              if (!turn) return null;
+              return (
+                <div key={i} className="border-b border-white/10 pb-3 mb-3 last:border-0">
+                  <div className="text-streetGray mb-1 font-bold flex justify-between">
+                    <span>=== TURN {turn.turnNumber} ===</span>
+                    {isPlayingback && i === playbackTurns.length - 1 && (
+                      <span className="text-punkPink animate-pulse text-[10px]">● LIVE EVALUATION</span>
+                    )}
+                  </div>
+                  <div className="flex flex-col md:flex-row gap-2 md:gap-8 mb-2">
+                    <div className="text-white/50 font-bold">
+                      Round Score: P1 ({turn.stateAfter && (turn.stateAfter as any).p1Score || 0}) vs P2 ({turn.stateAfter && (turn.stateAfter as any).p2Score || 0})
+                    </div>
+                    <div className="text-punkGreen">P1 Move: {JSON.stringify(turn.p1Move)}</div>
+                    <div className="text-punkBlue">P2 Move: {JSON.stringify(turn.p2Move)}</div>
+                  </div>
+                  {turn.logMessages.map((log, li) => {
+                    const isBrain = log.includes("[") && log.includes("Brain]");
+                    const isSystem = log.includes("[System]");
+                    return (
+                      <div 
+                        key={li} 
+                        className={`ml-4 leading-relaxed font-mono ${
+                          isBrain ? "text-punkPurple font-semibold" : 
+                          isSystem ? "text-white/40" : 
+                          "text-punkYellow"
+                        }`}
+                      >
+                        › {log}
+                      </div>
+                    );
+                  })}
                 </div>
-                {turn.logMessages.map((log, li) => (
-                  <div key={li} className="text-punkYellow ml-4">› {log}</div>
-                ))}
+              );
+            })}
+            
+            {isPlayingback && (
+              <div className="flex items-center gap-2 text-punkPink animate-pulse text-xs pl-2 pt-2">
+                <span className="w-2.5 h-2.5 rounded-full bg-punkPink animate-ping" />
+                <span>Simulating Swarm Minds for Turn {playbackTurns.length + 1}...</span>
               </div>
-            ))}
+            )}
           </div>
 
-          <div className="mt-6 p-4 punk-card text-center">
-            <p className="text-streetGray text-sm uppercase tracking-wider mb-2">Final Resolution</p>
-            <p className="text-3xl font-heading tracking-widest text-inkBlack">
-              {result.winnerId === "p1" ? "AGENT 1 WINS!! 🏆" : result.winnerId === "p2" ? "AGENT 2 WINS!! 🏆" : "DRAW 🤝"}
-            </p>
-            <p className="text-punkPink mt-2 font-mono text-sm font-bold">{result.reason}</p>
-          </div>
+          {result && (
+            <div className="mt-6 p-4 punk-card text-center transition-all duration-500 animate-fadeIn">
+              <p className="text-streetGray text-sm uppercase tracking-wider mb-2">Final Resolution</p>
+              <p className="text-3xl font-heading tracking-widest text-inkBlack">
+                {result.winnerId === "p1" ? "AGENT 1 WINS!! 🏆" : result.winnerId === "p2" ? "AGENT 2 WINS!! 🏆" : "DRAW 🤝"}
+              </p>
+              <p className="text-punkPink mt-2 font-mono text-sm font-bold">{result.reason}</p>
+            </div>
+          )}
         </Card>
       )}
     </div>

@@ -10,6 +10,7 @@ import {
   useNodesState,
   useEdgesState,
   addEdge,
+  ReactFlowProvider,
   type Connection,
   type Node,
   type Edge,
@@ -27,7 +28,7 @@ import { useAlgorandWallet } from "@/components/Providers";
 
 let nodeIdCounter = 1000;
 
-export default function NodeEditorPage() {
+function NodeEditorCanvas() {
   const reactFlowWrapper = useRef<HTMLDivElement>(null);
   const { activeAddress } = useAlgorandWallet();
   const [nodes, setNodes, onNodesChange] = useNodesState<Node>([]);
@@ -401,6 +402,17 @@ export default function NodeEditorPage() {
     [setEdges]
   );
 
+  // Handle edge click to delete connections
+  const onEdgeClick = useCallback(
+    (event: React.MouseEvent, edge: Edge) => {
+      event.stopPropagation();
+      if (confirm("Remove this connection?")) {
+        setEdges((eds) => eds.filter((e) => e.id !== edge.id));
+      }
+    },
+    [setEdges]
+  );
+
   // Auto-cache visual positions/connections locally on changes
   useEffect(() => {
     if (activeAddress && nodes.length > 0) {
@@ -685,6 +697,7 @@ export default function NodeEditorPage() {
         onNodesChange={onNodesChange}
         onEdgesChange={onEdgesChange}
         onConnect={onConnect}
+        onEdgeClick={onEdgeClick}
         onDragOver={onDragOver}
         onDrop={onDrop}
         isValidConnection={isValidConnection}
@@ -757,6 +770,14 @@ export default function NodeEditorPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function NodeEditorPage() {
+  return (
+    <ReactFlowProvider>
+      <NodeEditorCanvas />
+    </ReactFlowProvider>
   );
 }
 

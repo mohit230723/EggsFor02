@@ -1,20 +1,29 @@
 "use client";
 
 import { memo, useState } from "react";
-import { Handle, Position, type NodeProps } from "@xyflow/react";
-import { Wallet } from "lucide-react";
+import { Handle, Position, type NodeProps, useReactFlow } from "@xyflow/react";
+import { Wallet, Trash2 } from "lucide-react";
 import type { WalletNodeData } from "../../types/nodes";
 import { useAlgorandWallet } from "@/components/Providers";
 import WalletConnectionModal from "@/components/WalletConnectionModal";
 
 function WalletNodeComponent({ id, data }: NodeProps & { data: WalletNodeData & { isMain?: boolean; onAddressChange?: (id: string, addr: string) => void } }) {
   const { activeAddress } = useAlgorandWallet();
+  const { setNodes, setEdges } = useReactFlow();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   // Use real activeAddress for main wallet node, otherwise use custom user input
   const isMain = data.isMain !== false; // defaults to true if not specified
   const address = isMain ? activeAddress : data.address;
   const isConnected = isMain ? !!activeAddress : !!data.address;
+
+  const handleDelete = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (confirm("Are you sure you want to remove this wallet node?")) {
+      setNodes((nds) => nds.filter((n) => n.id !== id));
+      setEdges((eds) => eds.filter((edge) => edge.source !== id && edge.target !== id));
+    }
+  };
 
   const truncatedAddr = address
     ? `${address.slice(0, 6)}...${address.slice(-4)}`
@@ -34,9 +43,20 @@ function WalletNodeComponent({ id, data }: NodeProps & { data: WalletNodeData & 
           <span className={`font-heading text-xs uppercase tracking-wider ${isMain ? 'text-white' : 'text-inkBlack'}`}>
             {isMain ? "Main Wallet" : "Custom Wallet"}
           </span>
-          <span className={`jp-accent-visible text-[10px] ml-auto ${isMain ? 'text-white/60' : 'text-inkBlack/60'}`}>
-            財布
-          </span>
+          {!isMain && (
+            <button
+              onClick={handleDelete}
+              className="ml-auto text-inkBlack hover:text-punkRed transition-colors p-1"
+              title="Delete Wallet Node"
+            >
+              <Trash2 className="w-3.5 h-3.5" />
+            </button>
+          )}
+          {isMain && (
+            <span className="jp-accent-visible text-[10px] ml-auto text-white/60">
+              財布
+            </span>
+          )}
         </div>
 
         {/* Body */}

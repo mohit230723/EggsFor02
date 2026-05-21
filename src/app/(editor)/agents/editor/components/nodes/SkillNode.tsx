@@ -1,14 +1,15 @@
 "use client";
 
 import { memo, useState } from "react";
-import { Handle, Position, type NodeProps } from "@xyflow/react";
-import { Code, ChevronDown, ChevronUp } from "lucide-react";
+import { Handle, Position, type NodeProps, useReactFlow } from "@xyflow/react";
+import { Code, ChevronDown, ChevronUp, Trash2 } from "lucide-react";
 import type { SkillNodeData } from "../../types/nodes";
 
 import { useAlgorandWallet } from "@/components/Providers";
 
-function SkillNodeComponent({ data }: NodeProps & { data: SkillNodeData & { id: number } }) {
+function SkillNodeComponent({ id, data }: NodeProps & { data: SkillNodeData & { id: number } }) {
   const { activeAddress } = useAlgorandWallet();
+  const { setNodes, setEdges } = useReactFlow();
   const [expanded, setExpanded] = useState(false);
   const [loadingCode, setLoadingCode] = useState(false);
   const [codeSource, setCodeSource] = useState(data.code?.source || "");
@@ -21,6 +22,14 @@ function SkillNodeComponent({ data }: NodeProps & { data: SkillNodeData & { id: 
     Data: "sticker-orange",
     Prediction: "sticker-pink",
     Strategy: "sticker-yellow",
+  };
+
+  const handleDelete = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (confirm("Are you sure you want to remove this skill node?")) {
+      setNodes((nds) => nds.filter((n) => n.id !== id));
+      setEdges((eds) => eds.filter((edge) => edge.source !== id && edge.target !== id));
+    }
   };
 
   const handleToggleExpand = async () => {
@@ -65,9 +74,13 @@ function SkillNodeComponent({ data }: NodeProps & { data: SkillNodeData & { id: 
         <span className="font-heading text-xs text-inkBlack uppercase tracking-wider truncate max-w-[120px]">
           {data.name || "Skill"}
         </span>
-        <span className="jp-accent-visible text-[10px] text-inkBlack/40 ml-auto">
-          技能
-        </span>
+        <button
+          onClick={handleDelete}
+          className="ml-auto text-inkBlack hover:text-punkRed transition-colors p-1"
+          title="Delete Skill Node"
+        >
+          <Trash2 className="w-3.5 h-3.5" />
+        </button>
       </div>
 
       {/* Body */}

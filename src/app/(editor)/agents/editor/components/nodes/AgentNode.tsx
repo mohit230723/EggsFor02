@@ -1,11 +1,21 @@
 "use client";
 
 import { memo } from "react";
-import { Handle, Position, type NodeProps } from "@xyflow/react";
-import { Bot, Swords, Zap } from "lucide-react";
+import { Handle, Position, type NodeProps, useReactFlow } from "@xyflow/react";
+import { Bot, Swords, Zap, Trash2 } from "lucide-react";
 import type { AgentNodeData } from "../../types/nodes";
 
-function AgentNodeComponent({ data }: NodeProps & { data: AgentNodeData }) {
+function AgentNodeComponent({ id, data }: NodeProps & { data: AgentNodeData }) {
+  const { setNodes, setEdges } = useReactFlow();
+
+  const handleDelete = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (confirm("Are you sure you want to remove this agent node?")) {
+      setNodes((nds) => nds.filter((n) => n.id !== id));
+      setEdges((eds) => eds.filter((edge) => edge.source !== id && edge.target !== id));
+    }
+  };
+
   const truncatedAddr = data.address
     ? `${data.address.slice(0, 6)}...${data.address.slice(-4)}`
     : "No Address";
@@ -47,9 +57,13 @@ function AgentNodeComponent({ data }: NodeProps & { data: AgentNodeData }) {
         <span className="font-heading text-xs text-white uppercase tracking-wider truncate max-w-[120px]">
           {data.name || "Agent"}
         </span>
-        <span className="jp-accent-visible text-[10px] text-white/60 ml-auto">
-          代理
-        </span>
+        <button
+          onClick={handleDelete}
+          className="ml-auto text-white/80 hover:text-punkRed transition-colors p-1"
+          title="Delete Agent Node"
+        >
+          <Trash2 className="w-3.5 h-3.5" />
+        </button>
       </div>
 
       {/* Body */}

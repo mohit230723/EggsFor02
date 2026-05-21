@@ -10,6 +10,8 @@ export interface SandboxResult {
 export async function evaluateAgentMove(
   code: string,
   state: any,
+  playerId: string,
+  history: any[] = [],
   timeoutMs: number = 500,
   maxMemoryBytes: number = 1024 * 1024 * 5 // 5MB
 ): Promise<SandboxResult> {
@@ -37,6 +39,16 @@ export async function evaluateAgentMove(
     context.setProp(context.global, 'GAME_STATE_JSON', stateHandle);
     stateHandle.dispose();
 
+    // Inject history into the global object
+    const historyHandle = context.newString(JSON.stringify(history));
+    context.setProp(context.global, 'HISTORY_JSON', historyHandle);
+    historyHandle.dispose();
+
+    // Inject playerId into the global object
+    const playerHandle = context.newString(playerId);
+    context.setProp(context.global, 'PLAYER_ID', playerHandle);
+    playerHandle.dispose();
+
     // Inject console.log for debugging within the sandbox
     const logHandle = context.newFunction("log", (...args) => {
       const parts = args.map(a => context.dump(a));
@@ -49,11 +61,17 @@ export async function evaluateAgentMove(
     customConsole.dispose();
 
     // The agent code should be wrapped in an IIFE that returns a value based on the state
-    // We parse the JSON state inside the sandbox so the user code can just use `getState()`
+    // We parse the JSON state inside the sandbox so the user code can just use `getState()`, `getHistory()`, and `getPlayerId()`
     const wrappedCode = `
       (function() {
         function getState() {
           return JSON.parse(GAME_STATE_JSON);
+        }
+        function getHistory() {
+          return JSON.parse(HISTORY_JSON);
+        }
+        function getPlayerId() {
+          return PLAYER_ID;
         }
         ${code}
       })();

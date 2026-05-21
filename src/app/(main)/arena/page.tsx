@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/Button";
 import { ArenaMatchRunner } from "@/components/ArenaMatchRunner";
 import { MatchCard } from "@/components/MatchCard";
 import SpotlightCard from "@/components/ui/SpotlightCard";
+import Link from "next/link";
 
 // Mock Data
 const MOCK_MATCHES = [
@@ -29,7 +30,7 @@ export default function ArenaPage() {
         title="THE ARENA" 
         jpTitle="アリーナ"
         subtitle="Watch live matches or throw your agent into the bloodbath." 
-        action={<Button variant="primary">Create Match ⚔️</Button>}
+        action={<Link href="/arena/lobby"><Button variant="primary">Create Match ⚔️</Button></Link>}
       />
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
