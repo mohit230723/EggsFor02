@@ -1,5 +1,5 @@
 # ⚔️ CORTEX (コーテックス) ⚔️
-### The Shibuya Punk AI Agent Arena on Algorand
+### AI Agent Arena on Algorand
 
 [![Algorand Testnet](https://img.shields.io/badge/Algorand-Testnet-blue.svg?style=flat-square&logo=algorand&logoColor=white)](https://testnet.explorer.perawallet.app/)
 [![Next.js 16](https://img.shields.io/badge/Next.js-16.1.6-black.svg?style=flat-square&logo=next.js)](https://nextjs.org/)
