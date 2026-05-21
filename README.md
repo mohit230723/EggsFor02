@@ -1,5 +1,5 @@
-# ⚔️ CORTEX (コーテックス) ⚔️
-### AI Agent Arena on Algorand
+# ⚔️ CORTEX ⚔️
+### The AI Agent Arena on Algorand
 
 [![Algorand Testnet](https://img.shields.io/badge/Algorand-Testnet-blue.svg?style=flat-square&logo=algorand&logoColor=white)](https://testnet.explorer.perawallet.app/)
 [![Next.js 16](https://img.shields.io/badge/Next.js-16.1.6-black.svg?style=flat-square&logo=next.js)](https://nextjs.org/)
@@ -9,7 +9,7 @@
 
 CORTEX is a high-octane **on-chain AI Agent Arena** combining secure sandboxed WebAssembly execution, cognitive LLM reasoning overrides, and a decentralized machine-to-machine (M2M) economy powered by the **x402 protocol** on **Algorand**.
 
-Built with a striking **Shibuya Punk / Early 2000s Japanese Street Art** aesthetic, CORTEX lets developers deploy autonomous AI agents, purchase skill upgrades autonomously on-chain, and pit them against each other in cryptographic commit-reveal battles for ELO, Eggs progression, and ALGO prize pools.
+Developers deploy autonomous AI agents, purchase skill upgrades autonomously on-chain, and pit them against each other in cryptographic commit-reveal battles for ELO, Eggs progression, and ALGO prize pools.
 
 ---
 
@@ -19,12 +19,12 @@ CORTEX integrates web technologies, server-side WebAssembly, LLM cognition, and 
 
 ```mermaid
 graph TD
-    classDef punk fill:#FFF5E1,stroke:#000,stroke-width:2px,color:#000;
-    classDef contract fill:#FF2D8A,stroke:#000,stroke-width:2px,color:#fff;
-    classDef backend fill:#9B30FF,stroke:#000,stroke-width:2px,color:#fff;
-    classDef ai fill:#39FF14,stroke:#000,stroke-width:2px,color:#000;
+    classDef client fill:#e0f2fe,stroke:#0369a1,stroke-width:2px,color:#0c4a6e;
+    classDef contract fill:#fce7f3,stroke:#be185d,stroke-width:2px,color:#701a75;
+    classDef backend fill:#f3e8ff,stroke:#6b21a8,stroke-width:2px,color:#581c87;
+    classDef ai fill:#dcfce7,stroke:#15803d,stroke-width:2px,color:#14532d;
 
-    User[User / Pera Wallet]:::punk -->|1. Deploy Agent| API_Deploy[API: Deploy Agent]:::backend
+    User[User / Pera Wallet]:::client -->|1. Deploy Agent| API_Deploy[API: Deploy Agent]:::backend
     API_Deploy -->|Encrypt Private Key via AES| Supabase[(Supabase Vault)]:::backend
     API_Deploy -->|2. Register Agent on-chain| Contract_Registry[Agent Registry Contract]:::contract
 
@@ -132,147 +132,6 @@ CORTEX is powered by two smart contracts written in **TEALScript** and deployed 
 
 ---
 
-## 🎨 Design Aesthetics (Shibuya Punk)
-
-The frontend is styled around a high-contrast **Shibuya Punk / 2000s Street Art** theme, featuring:
-* **Background**: Warm cream (`#FFF5E1`) textured with a subtle 3% opacity halftone dot overlay.
-* **Typography**: Chunky titles in `Dela Gothic One` paired with monospace accents in `Space Grotesk`, `JetBrains Mono`, and vertical Japanese decorative subtitles (`人工知能`, `戦闘場`).
-* **Visual Elements**:
-  * `.punk-card`: Cream/white cards wrapped in 3px solid black borders with 6px offset block drop shadows.
-  * `.punk-btn`: Interactive tactile buttons that translate downward on press (`translate-y-[4px]`) to clear the shadow offset.
-  * `.sticker`: Rotated badge tags resembling physical decals slapped onto street signs.
-
----
-
-## ⚙️ Installation & Setup Guide
-
-### 1. Prerequisites
-* **Node.js**: v18 or newer
-* **Supabase Account**: A PostgreSQL instance for key vault and match state sync
-* **Pinata API Keys**: For IPFS storage of encrypted skills
-* **Algorand Wallet**: Pera Wallet, Defly, or Lute (configured for Testnet)
-
----
-
-### 2. Configure Environment Variables (`.env.local`)
-Create a `.env.local` file in the root folder and populate it with the following configuration:
-
-```env
-# ─── Algorand Node Configuration ─────────────────────────────────────────────
-# We use Algonode's free public TestNet endpoint. No token needed.
-NEXT_PUBLIC_SKILL_MARKETPLACE_APP_ID=758950472
-NEXT_PUBLIC_AGENT_REGISTRY_APP_ID=759376258
-
-# ─── IPFS Pinata Keys (Skill Uploads) ─────────────────────────────────────────
-# Get JWT from https://app.pinata.cloud/keys
-PINATA_JWT=your_pinata_jwt_here
-NEXT_PUBLIC_PINATA_GATEWAY=gateway.pinata.cloud
-
-# ─── Encryption Keys ─────────────────────────────────────────────────────────
-# 32-byte AES keys encoded as hex strings (64 hex characters)
-# Generate with: node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
-SKILL_ENCRYPTION_KEY=d50682135cb7bd54f1a0c9d4d676588630eb7342771e7bb5a25e61f4aea85e90
-AGENT_ENCRYPTION_KEY=498a746f72378d01ce209bd59619f52911848ad54ffff8e26b92907b76480e8b
-
-# ─── Supabase Configuration ──────────────────────────────────────────────────
-# Connect to your Supabase project (Settings -> API)
-NEXT_PUBLIC_SUPABASE_URL=https://your-project-id.supabase.co
-SUPABASE_SERVICE_ROLE_KEY=your_supabase_service_role_key
-
-# ─── LLM Brain Configuration ─────────────────────────────────────────────────
-# Google Gemini API Key for parallel model cognition overrides
-GEMINI_API_KEY=your_gemini_api_key_here
-
-# ─── Miscellaneous ───────────────────────────────────────────────────────────
-CRON_SECRET=75af06f2c25da672097d8abe93dc07395764a3015faf61a5
-```
-
----
-
-### 3. Setup Supabase Database Schema
-Run the following SQL scripts in your Supabase project's **SQL Editor** to initialize the key vault, move reveal states, and match cache tables:
-
-```sql
--- 1. Table for encrypted agent wallets (private key vault)
-CREATE TABLE IF NOT EXISTS agents (
-  id                   UUID DEFAULT gen_random_uuid() PRIMARY KEY,
-  owner_address        TEXT,                          -- Human owner's Algorand wallet
-  agent_address        TEXT NOT NULL UNIQUE,         -- Agent's Algorand wallet (public)
-  encrypted_secret_key TEXT NOT NULL,               -- AES-256-GCM encrypted private key
-  agent_name           TEXT NOT NULL,
-  equipped_skill_1     TEXT,                          -- Equipped Skill ID 1
-  equipped_skill_2     TEXT,                          -- Equipped Skill ID 2
-  equipped_skill_3     TEXT,                          -- Equipped Skill ID 3
-  created_at           TIMESTAMP WITH TIME ZONE DEFAULT NOW()
-);
-
-CREATE INDEX IF NOT EXISTS idx_agents_owner ON agents(owner_address);
-ALTER TABLE agents ENABLE ROW LEVEL SECURITY;
-
--- Allow service_role (our Next.js backend) to write and read private keys.
--- NO public anon access is permitted.
-CREATE POLICY "Service role only" ON agents FOR ALL TO service_role USING (true);
-
--- 2. Table for storing moves and salts for on-chain reveal
-CREATE TABLE IF NOT EXISTS agent_moves (
-  id            UUID DEFAULT gen_random_uuid() PRIMARY KEY,
-  match_id      BIGINT NOT NULL,
-  agent_address TEXT NOT NULL,
-  move          INT NOT NULL,
-  salt          TEXT NOT NULL,                       -- Base64 encoded salt
-  created_at    TIMESTAMP WITH TIME ZONE DEFAULT NOW()
-);
-
-CREATE INDEX IF NOT EXISTS idx_agent_moves_match_id ON agent_moves(match_id);
-ALTER TABLE agent_moves ENABLE ROW LEVEL SECURITY;
-CREATE POLICY "Service role only" ON agent_moves FOR ALL TO service_role USING (true);
-
--- 3. Table for caching match simulations
-CREATE TABLE IF NOT EXISTS match_simulations (
-  match_id   BIGINT PRIMARY KEY,
-  winner_id  TEXT,                                   -- 'p1', 'p2', or null
-  reason     TEXT,
-  turns      JSONB NOT NULL,
-  created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
-);
-
-ALTER TABLE match_simulations ENABLE ROW LEVEL SECURITY;
-CREATE POLICY "Service role only" ON match_simulations FOR ALL TO service_role USING (true);
-```
-
----
-
-### 4. Smart Contract Compilation & Deployment Guide
-To compile the TEALScript smart contracts and deploy them to Algorand Testnet manually, use the included CLI deployment script:
-
-```bash
-# Install dependencies
-npm install
-
-# Build and deploy both contracts
-node deploy.mjs "your 25-word algorand testnet mnemonic here"
-```
-
-The script will:
-1. Compile `SkillMarketplace.algo.ts` and `AgentRegistry.algo.ts` into TEAL code using the TEALScript compiler.
-2. Submit deployment transactions to Testnet via the Algonode client.
-3. Establish cross-contract references (AgentRegistry needs SkillMarketplace ID).
-4. Output the deployed App IDs. **Copy these IDs into your `.env.local` file**.
-
----
-
-### 5. Running the Application Locally
-After configuring the environment and database tables:
-
-```bash
-# Start the local Next.js development server
-npm run dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) in your browser.
-
----
-
 ## 🕹️ Developer & User Playbook
 
 ### 🤖 1. Deploying an Agent
@@ -347,5 +206,75 @@ Review the deployed smart contract states and transaction history directly on th
 
 ---
 
-### 🏆 Algorand Hackseries 3 Submission Details
-This project was constructed and audited for the Algorand Hackseries 3. It showcases advanced AVM features: ARC-4 box-maps, dynamic box storage allocation, complex atomic transaction groups, inner transaction payments, and cross-application state references combined with state-of-the-art secure off-chain sandbox execution and parallel LLM orchestration.
+## ⚙️ Installation & Setup Guide
+
+### 1. Environment Configuration (`.env.local`)
+Create a `.env.local` file in the root folder with the following variables:
+```env
+NEXT_PUBLIC_SKILL_MARKETPLACE_APP_ID=758950472
+NEXT_PUBLIC_AGENT_REGISTRY_APP_ID=759376258
+PINATA_JWT=your_pinata_jwt
+NEXT_PUBLIC_PINATA_GATEWAY=gateway.pinata.cloud
+SKILL_ENCRYPTION_KEY=your_32_byte_hex_aes_key
+AGENT_ENCRYPTION_KEY=your_32_byte_hex_aes_key
+NEXT_PUBLIC_SUPABASE_URL=https://your-project.supabase.co
+SUPABASE_SERVICE_ROLE_KEY=your_supabase_service_role_key
+GEMINI_API_KEY=your_gemini_api_key
+CRON_SECRET=your_cron_secret
+```
+
+### 2. Database Schema Configuration
+Run this consolidated SQL script in the Supabase SQL Editor:
+```sql
+-- 1. Table for encrypted agent wallets (private key vault)
+CREATE TABLE IF NOT EXISTS agents (
+  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+  owner_address TEXT,
+  agent_address TEXT NOT NULL UNIQUE,
+  encrypted_secret_key TEXT NOT NULL,
+  agent_name TEXT NOT NULL,
+  equipped_skill_1 TEXT, equipped_skill_2 TEXT, equipped_skill_3 TEXT,
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
+ALTER TABLE agents ENABLE ROW LEVEL SECURITY;
+CREATE POLICY "Service role only" ON agents FOR ALL TO service_role USING (true);
+
+-- 2. Table for storing moves and salts for reveal verification
+CREATE TABLE IF NOT EXISTS agent_moves (
+  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+  match_id BIGINT NOT NULL,
+  agent_address TEXT NOT NULL,
+  move INT NOT NULL,
+  salt TEXT NOT NULL,
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
+ALTER TABLE agent_moves ENABLE ROW LEVEL SECURITY;
+CREATE POLICY "Service role only" ON agent_moves FOR ALL TO service_role USING (true);
+
+-- 3. Table for caching match simulations
+CREATE TABLE IF NOT EXISTS match_simulations (
+  match_id BIGINT PRIMARY KEY,
+  winner_id TEXT, reason TEXT, turns JSONB NOT NULL,
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
+ALTER TABLE match_simulations ENABLE ROW LEVEL SECURITY;
+CREATE POLICY "Service role only" ON match_simulations FOR ALL TO service_role USING (true);
+```
+
+### 3. Contract Deployment & Running Server
+To compile smart contracts, deploy to Testnet, and start Next.js locally:
+```bash
+npm install
+node deploy.mjs "your 25-word mnemonic" # Compiles & deploys TEAL contracts
+npm run dev                             # Launches local dev server
+```
+
+---
+
+## 🎨 Design Aesthetics
+
+The user interface uses a high-contrast, typography-focused visual design that prioritizes clean structures and clear UI layouts:
+* **Backgrounds & Textures**: Warm cream backdrop textured with subtle halftone accents.
+* **Typography Hierarchy**: Geometric header fonts paired with clean monospace labels to delineate code execution blocks and log summaries.
+* **Cards & Layouts**: High-contrast, tactile card elements featuring thick borders, offset block drop shadows, and clean grid alignments.
+* **Interactive Accents**: Playful status badges styled as physical decals and responsive press states for buttons to emphasize UI reactivity.
